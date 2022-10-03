@@ -1,0 +1,22 @@
+import { Fragment } from "react"
+import {Outlet,Link} from 'react-router-dom'
+import './navigation.style.scss'
+const Navigation = () => {
+    return (
+        <Fragment>
+            <div className="navigation">
+                <Link className='logo-container' to='/'>
+                    <p>PlaceHolder</p>
+                </Link>
+                <div className="nav-links-container">
+                    <Link className="nav-link" to='/placeholder'>
+                        PlaceHolder
+                    </Link>
+                </div>
+            </div>
+            <Outlet />
+        </Fragment>
+    )
+}
+
+export default Navigation

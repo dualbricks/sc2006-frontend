@@ -5,14 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import { CarParkProvider } from './contexts/carPark.context';
+import { UserProvider } from './contexts';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <CarParkProvider>
-        <App/>
-      </CarParkProvider>
+      <UserProvider>
+        <CarParkProvider>
+          <App/>
+        </CarParkProvider>
+      </UserProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -1,7 +1,11 @@
-import { Fragment } from "react"
+import { Fragment, useContext } from "react"
 import {Outlet,Link} from 'react-router-dom'
 import './navigation.style.scss'
+import { DropdownMenu, UserIcon } from "../../components"
+import { UserContext } from "../../contexts"
 const Navigation = () => {
+    const {user,isIconOpen}  = useContext(UserContext)
+    console.log(user);
     return (
         <Fragment>
             <div className="navigation">
@@ -13,6 +17,8 @@ const Navigation = () => {
                         PlaceHolder
                     </Link>
                 </div>
+                <UserIcon/>
+               { isIconOpen && <DropdownMenu/>}
             </div>
             <Outlet />
         </Fragment>

@@ -16,7 +16,10 @@ export const CarParkProvider = ({children})=>{
 
         const getCarParksList = async () => {
             try {
-                const carParkMap = await fetchAllCarParks();
+                let carParkMap = await fetchAllCarParks();
+                while(carParkMap.length === 0) {
+                    carParkMap = await fetchAllCarParks();  
+                }
                 setCarParkList(carParkMap);
                 setUpdateTime(Date());
             }catch(e) {
@@ -30,8 +33,6 @@ export const CarParkProvider = ({children})=>{
                 setUpdateTime(Date());
                 console.log("Updated")
             }, 1000*60)
-
-
         getCarParksList();
         return () => clearInterval(update);
     }, [])

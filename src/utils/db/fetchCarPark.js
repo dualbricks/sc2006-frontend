@@ -15,10 +15,11 @@ export const fetchAllCarParks = async ()=>{
 
 export const fetchHelper = async(url, options) => {
     try {
-        const {data} = await axios.get(url);
-        return data
+        const {data, status} = await axios.get(url);
+        console.log(status);
+        return data;
     }catch(e) {
-        console.log(e);
+        return [{error:e.code,_id: 1}];
     }
     
 }

@@ -8,6 +8,11 @@ const Home = () => {
     const [filteredCarParkList, setfilterCarParkList] = useState([]);
 
     useEffect(()=>{
+        console.log(carParkList);
+        if(carParkList.length === 1){
+            setfilterCarParkList(carParkList);
+            return;
+        };
         const newCarParks = carParkList.filter((carpark)=>carpark.Development.toLocaleLowerCase().includes(text))
         setfilterCarParkList(newCarParks);
     }, [carParkList, text])

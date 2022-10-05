@@ -10,6 +10,7 @@ import SignUpForm from './sign-up-form/sign-up-form.component'
 import Menu from './menu/menu.component'
 
 export {
+    
     SearchBar, 
     CarParkItem, 
     FormInput, 

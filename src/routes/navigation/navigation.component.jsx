@@ -3,6 +3,8 @@ import {Outlet,Link} from 'react-router-dom'
 import './navigation.style.scss'
 import { DropdownMenu, UserIcon } from "../../components"
 import { UserContext } from "../../contexts"
+
+
 const Navigation = () => {
     const {user,isIconOpen}  = useContext(UserContext)
     console.log(user);

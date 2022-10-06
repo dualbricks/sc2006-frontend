@@ -12,11 +12,17 @@ const Navigation = () => {
         <Fragment>
             <div className="navigation">
                 <Link className='logo-container' to='/'>
-                    <p>PlaceHolder</p>
+                    <p>Home</p>
                 </Link>
                 <div className="nav-links-container">
-                    <Link className="nav-link" to='/placeholder'>
-                        PlaceHolder
+                    <Link className="nav-link" to='/traffic'>
+                        Traffic Image
+                    </Link>
+                    <Link className="nav-link" to='/expenditure'>
+                        expenditure
+                    </Link>
+                    <Link className="nav-link" to='/settings'>
+                        settings
                     </Link>
                 </div>
                 <UserIcon/>

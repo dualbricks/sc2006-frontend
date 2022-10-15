@@ -1,16 +1,10 @@
-import './expenditure-overview-container.style.scss'
 import CanvasJSReact from '../../assets/canvasjs.react';
-var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+    // var CanvasJS = CanvasJSReact.CanvasJS;
+    var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+    console.log("herehere")
+const canvasjs = () => {
+    console.log("herehere2")
 
-const ExpenditureOverviewContainer = (costObj) => {
-    const costArray = Object.values(costObj)
-    let total =0
-    for (let i = 0; i<costArray.length; i++){
-        total += Number(costArray[i])
-    }
-
-    // placeholder data, replace y values with total monthly
-    // idk how to do more than 1y
     const data = [
         { x: new Date(2017, 0), y: 25060 },
         { x: new Date(2017, 1), y: 27980 },
@@ -28,37 +22,30 @@ const ExpenditureOverviewContainer = (costObj) => {
     const options = {
         animationEnabled: true,
         title:{
-            text: "Monthly Expenditure (2022)"
+            text: "Monthly Sales - 2017"
         },
         axisX: {
             valueFormatString: "MMM"
         },
         axisY: {
-            title: "Amount ($)",
+            title: "Sales (in USD)",
             prefix: "$"
         },
         data: [{
-            yValueFormatString: "$#,###.00",
+            yValueFormatString: "$#,###",
             xValueFormatString: "MMMM",
             type: "spline",
-            color: "pink",
             dataPoints: data
         }]
     }
-    
-
-    return(
-        <div class="overview-container">          
-            <h1>Expenditure Overview Container</h1>
+    return (
+        <div>
             <CanvasJSChart options = {options}
                 /* onRef = {ref => this.chart = ref} */
-            />  
-            <section className='statistics'>
-                <p>Total expenditure: ${total}</p>
-                <p>Average expenditure: ${(total/costArray.length).toFixed(2)}</p>
-            </section>
+            />
+            {console.log("returning canvasjs")}
         </div>
-    )
+    );
 }
-
-export default ExpenditureOverviewContainer
+    
+export default canvasjs;

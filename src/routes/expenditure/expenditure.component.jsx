@@ -1,4 +1,5 @@
 import {ExpenditureOverviewContainer, ExpenditureRecord} from '../../components'
+import './expenditure.style.scss'
 
 const Expenditure = () => {
 
@@ -26,12 +27,17 @@ const Expenditure = () => {
     }
     const array = [object1, object2, object3]
     const costArray = array.map(object => object.cost)
-
+    
     return (
-        <div>
-            <h1>Expenditure Records</h1>
-            {array.map(object => <ExpenditureRecord {...object} />)}
-            <ExpenditureOverviewContainer {...costArray}/>
+        <div className="container">
+            <section className='overview-container'>            
+                <ExpenditureOverviewContainer {...costArray}/>
+            </section>
+            <section className="records">
+                <h1>Expenditure Records</h1>
+                {array.map(object => <ExpenditureRecord {...object} />)}
+            </section>
+
         </div>
     )
 }

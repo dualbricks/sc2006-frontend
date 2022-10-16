@@ -8,11 +8,12 @@ import DropdownMenu from './dropdown-menu/dropdown-menu.component'
 import UserIcon from './user-icon/user-icon.component'
 import SignUpForm from './sign-up-form/sign-up-form.component'
 import Menu from './menu/menu.component'
-
+import PopupComponent from './PopupDialog/PopupComponent'
 export {
     
     SearchBar, 
-    CarParkItem, 
+    CarParkItem,
+    PopupComponent,
     FormInput, 
     ResultContainer, 
     Button, 

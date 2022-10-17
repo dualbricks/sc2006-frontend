@@ -1,5 +1,5 @@
 import userEvent from "@testing-library/user-event";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../contexts";
 import { LogOutUser } from "../../utils/db";
@@ -9,6 +9,8 @@ const Menu = () => {
   // to implement logout
   const { setUser, setToken, setIsAuthenticated } = useContext(UserContext);
   const { token } = useContext(UserContext);
+  const [errorMessage, setErrorMessage] = useState('');
+
 
   const onLogout = async (e) => {
     e.preventDefault();
@@ -17,7 +19,7 @@ const Menu = () => {
     try {
       const data = await LogOutUser(token);
       setUser(null);
-      setToken(data.token);
+      setToken("");
       setIsAuthenticated(false);
     } catch (err) {
       console.log(err);
@@ -38,7 +40,8 @@ const Menu = () => {
       <Link to="/traffic">
         <button className="menu-button">Traffic</button>
       </Link>
-      <button className="menu-button" onclick={onLogout}>
+      <p>{errorMessage}</p>
+      <button className="menu-button" onClick={onLogout}>
         Logout
       </button>
     </div>

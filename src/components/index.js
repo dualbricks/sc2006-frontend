@@ -9,6 +9,7 @@ import UserIcon from './user-icon/user-icon.component'
 import SignUpForm from './sign-up-form/sign-up-form.component'
 import Menu from './menu/menu.component'
 import PopupComponent from './PopupDialog/PopupComponent'
+import TrafficContainer from './traffic-container/traffic-container.component'
 export {
     
     SearchBar, 
@@ -21,5 +22,6 @@ export {
     DropdownMenu,
     UserIcon,
     Menu,
-    SignUpForm
+    SignUpForm,
+    TrafficContainer
 }

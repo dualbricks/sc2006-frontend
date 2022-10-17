@@ -9,3 +9,5 @@ const TrafficContainer = (trafficimage) => {
     </div>
   );
 };
+
+export default TrafficContainer

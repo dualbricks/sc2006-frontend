@@ -3,6 +3,7 @@ import  {LocationButton, ResultContainer, SearchBar}  from '../../components';
 import { useEffect, useState, useContext } from 'react';
 import { CarParkContext } from '../../contexts';
 import { fetchCarParksByLocation, fetchCarParksByPostalCode } from '../../utils/db/fetchCarPark';
+import './home.style.scss'
 
 const Home = () => {
     const [text, setText] = useState('');
@@ -67,15 +68,16 @@ const Home = () => {
     }, [carParkList, text, location])
 
     return (
-        <div>
+        <div className='container-lg'>
             <Outlet/>
-            <div className='search-container'>
-
+            <div className='search-container text-center'>
                 <SearchBar text={text} setText={setText} setLocation={setLocation}/>
                 <LocationButton setlocation={setLocation}/>
             </div>
             <h2>Last Updated at {updateTime}</h2>
-            <ResultContainer CarparkList={filteredCarParkList}/>
+            <div className='border border-info rounded overflow-auto result-container'>
+                <ResultContainer CarparkList={filteredCarParkList}/>
+            </div>
             <p>{error}</p>
         </div>
     )

@@ -1,0 +1,35 @@
+.carpark-container{
+    position: static;
+    width: 80%;
+    background-color: rgb(233, 255, 205);
+    background-attachment: fixed;
+    border: 2px solid #000;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    margin: 10px auto;
+    overflow: auto;
+}
+
+.favourite-btn{
+    cursor: pointer;
+    position: absolute;
+    font-size: 30px;
+    border: 1px solid #000;
+    bottom: 16px;
+    right: 16px;
+}
+
+.more-info{
+    cursor: pointer;
+    border: 1px solid #000;
+}
+
+.desc{
+    padding-left: 10px;
+}
+
+.prediction{
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+}

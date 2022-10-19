@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export const SignInUserWithEmailAndPassword = async (email, password)=>{
+    axios.defaults.headers.post['Authorization'] = `Bearer ${sessionStorage.getItem('token')}`;
 
     try {
         const options = {

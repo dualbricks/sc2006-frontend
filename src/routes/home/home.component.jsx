@@ -23,6 +23,12 @@ const Home = () => {
                 return;
             }
             if(carParkList.length === 1){
+                console.log(carParkList)
+                if(carParkList[0].error) { 
+                    setfilterCarParkList([]);
+                    setError(carParkList[0].error);
+                    return;
+                }
                 setfilterCarParkList(carParkList);
                 return;
             };

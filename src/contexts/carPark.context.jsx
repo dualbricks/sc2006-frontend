@@ -17,13 +17,18 @@ export const CarParkProvider = ({children})=>{
         const getCarParksList = async () => {
             try {
                 let carParkMap = await fetchAllCarParks();
-                while(carParkMap.length === 0) {
+                if(carParkMap.length === 1) {
+                    if(carParkMap[0].error) {
+                        throw new Error("No carpark found");
+                    }
+                }
+                if(carParkMap.length === 0) {
                     carParkMap = await fetchAllCarParks();  
                 }
                 setCarParkList(carParkMap);
                 setUpdateTime(Date());
             }catch(e) {
-                console.log(e);
+                setCarParkList(e);
             }
     
         }

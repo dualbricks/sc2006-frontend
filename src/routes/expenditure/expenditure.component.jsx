@@ -52,7 +52,6 @@ const Expenditure = () => {
                 </form>
                 {toRenderArray.map(object => <ExpenditureRecord {...object} />)}                
                 </section>
-
         </div>
     )
 }

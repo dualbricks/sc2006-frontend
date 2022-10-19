@@ -2,45 +2,6 @@ import React from 'react';
 import { Button } from '..';
 import { changePassword } from '../../routes';
 
-// export default function changePassword() {
-//     const nav = useNavigate();
-//     const [fields, handleFieldChange] = useFormFields({
-//         password: "",
-//         oldPassword: "",
-//         confirmPassword: "",
-//     });
-//     const [isChanging, setIsChanging] = useState(false);
-  
-//     function validateForm() {
-//         return (
-//             fields.oldPassword.length > 0 &&
-//             fields.password.length > 0 &&
-//             fields.password === fields.confirmPassword
-//         );
-//     }
-  
-//     async function handleChangeClick(event) {
-//         event.preventDefault();
-
-//         setIsChanging(true);
-
-//         try {
-//             const currentUser = await Auth.currentAuthenticatedUser();
-//             await Auth.changePassword(
-//                 currentUser,
-//                 fields.oldPassword,
-//                 fields.password
-//         );
-
-//         nav("/settings");
-//         } catch (error) {
-//             error(error);
-//             setIsChanging(false);
-//         }
-//     }
-// };
-
-
 function handleChangeClick(e) {
     var oldP=document.getElementById("currentPassword").value;
     var newP=document.getElementById("newPassword").value;

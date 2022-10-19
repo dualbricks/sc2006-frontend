@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from '..';
-import { changePassword } from '../../routes';
+import { ChangePassword } from '../../routes';
 
 function handleChangeClick(e) {
     var oldP=document.getElementById("currentPassword").value;

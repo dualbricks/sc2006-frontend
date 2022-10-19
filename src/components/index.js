@@ -10,6 +10,8 @@ import SignUpForm from './sign-up-form/sign-up-form.component'
 import Menu from './menu/menu.component'
 import PopupComponent from './PopupDialog/PopupComponent'
 import TrafficContainer from './traffic-container/traffic-container.component'
+import LocationButton from './location-button/location-button.component'
+import Map from './map/map.component'
 export {
     
     SearchBar, 
@@ -23,5 +25,7 @@ export {
     UserIcon,
     Menu,
     SignUpForm,
-    TrafficContainer
+    TrafficContainer,
+    LocationButton,
+    Map
 }

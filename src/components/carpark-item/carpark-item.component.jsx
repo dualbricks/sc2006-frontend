@@ -4,6 +4,7 @@ import { fetchAvailabilityByOptions } from '../../utils/db/fetchAvailabilityLog'
 import PopupComponent from '../PopupDialog/PopupComponent';
 import './carpark-item.style.scss';
 import { timeConverterForPrediction } from '../../utils/timeConverter';
+import {Map} from "../index"
 
 const CarParkItem = ({carpark}) => {
     const [ isOpen, setIsOpen ] = useState(false);
@@ -11,7 +12,7 @@ const CarParkItem = ({carpark}) => {
     const [heavy, setHeavy] = useState(0);
     const [normal, setNormal] = useState(0);
     const [motorcycle, setMotorcycle] = useState(0);
-    const { AvailableLots, Development, LotType, Agency, Area, _id, CarParkID} = carpark;
+    const { AvailableLots, Development, Agency, Area, _id, CarParkID} = carpark;
     // first render 
     useEffect(()=>{
         setAvailability();
@@ -122,6 +123,7 @@ const CarParkItem = ({carpark}) => {
             </main>
             {isOpen&& <PopupComponent className = "desc" handleClose ={togglePopup} children = {
                         <div>
+                            <Map carpark={carpark}/>
                             <h3>Area: {Area}</h3>
                             <h3>Development: {Development}</h3>
                             <h3>Available Normal Lots: {normal}</h3>

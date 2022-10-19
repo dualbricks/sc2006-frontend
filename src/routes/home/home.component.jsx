@@ -1,15 +1,23 @@
 import {Outlet} from 'react-router-dom'
-import  {ResultContainer, SearchBar}  from '../../components';
+import  {LocationButton, ResultContainer, SearchBar}  from '../../components';
 import { useEffect, useState, useContext } from 'react';
 import { CarParkContext } from '../../contexts';
-import { fetchCarParksByPostalCode } from '../../utils/db/fetchCarPark';
+import { fetchCarParksByLocation, fetchCarParksByPostalCode } from '../../utils/db/fetchCarPark';
+
 const Home = () => {
     const [text, setText] = useState('');
     const {carParkList, updateTime} = useContext(CarParkContext)
     const [filteredCarParkList, setfilterCarParkList] = useState([]);
     const [error, setError] = useState('');
+    const [location, setLocation] = useState({});
+
     useEffect(()=>{
         const filtering = async ()=>{
+            if(location.latitude && location.longitude) {
+                const data = await fetchCarParksByLocation(location);
+                setfilterCarParkList(data);
+                return;
+            }
             if(text.length === 0) { 
                 setfilterCarParkList(carParkList.slice(0,100))
                 return;
@@ -50,12 +58,16 @@ const Home = () => {
 
         }
         filtering();
-    }, [carParkList, text])
+    }, [carParkList, text, location])
 
     return (
         <div>
             <Outlet/>
-            <SearchBar text={text} setText={setText}/>
+            <div className='search-container'>
+
+                <SearchBar text={text} setText={setText} setLocation={setLocation}/>
+                <LocationButton setlocation={setLocation}/>
+            </div>
             <h2>Last Updated at {updateTime}</h2>
             <ResultContainer CarparkList={filteredCarParkList}/>
             <p>{error}</p>

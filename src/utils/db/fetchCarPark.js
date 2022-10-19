@@ -21,6 +21,15 @@ export const fetchCarParksByPostalCode = async (postalCode)=>{
     }
 }
 
+export const fetchCarParksByLocation = async (location)=>{
+    try {
+        const data = await fetchHelper(`carparks/${location.latitude}-${location.longitude}`);
+        return data
+    }catch(e) {
+        throw new Error(e);
+    }
+}
+
 
 export const fetchHelper = async(url, options) => {
     try {

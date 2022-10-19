@@ -3,27 +3,34 @@ import CanvasJSReact from '../../assets/canvasjs.react';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const ExpenditureOverviewContainer = (costObj) => {
+    // Calculate statistics - total and average (yet to filter by month)
     const costArray = Object.values(costObj)
+
     let total =0
     for (let i = 0; i<costArray.length; i++){
-        total += Number(costArray[i])
+        total += Number(costArray[i].y)
     }
 
-    // placeholder data, replace y values with total monthly
-    // idk how to do more than 1y
+    // Graph 
+    const monthlyCost = []
+    for (let i = 0; i<12; i++){
+            monthlyCost[i] = 0
+    }
+    for (let j = 0; j<costArray.length; j++){
+        let month = costArray[j].x
+        monthlyCost[month] += Number(costArray[j].y);
+    }
     const data = [
-        { x: new Date(2017, 0), y: 25060 },
-        { x: new Date(2017, 1), y: 27980 },
-        { x: new Date(2017, 2), y: 42800 },
-        { x: new Date(2017, 3), y: 32400 },
-        { x: new Date(2017, 4), y: 35260 },
-        { x: new Date(2017, 5), y: 33900 },
-        { x: new Date(2017, 6), y: 40000 },
-        { x: new Date(2017, 7), y: 52500 },
-        { x: new Date(2017, 8), y: 32300 },
-        { x: new Date(2017, 9), y: 42000 },
-        { x: new Date(2017, 10), y: 37160 },
-        { x: new Date(2017, 11), y: 38400 }
+        { x: new Date(2022, 0), y: monthlyCost[0] },
+        { x: new Date(2022, 1), y: monthlyCost[1] },
+        { x: new Date(2022, 2), y: monthlyCost[2] },
+        { x: new Date(2022, 3), y: monthlyCost[3] },
+        { x: new Date(2022, 4), y: monthlyCost[4] },
+        { x: new Date(2022, 5), y: monthlyCost[5] },
+        { x: new Date(2022, 6), y: monthlyCost[6] },
+        { x: new Date(2022, 7), y: monthlyCost[7] },
+        { x: new Date(2022, 8), y: monthlyCost[8] },
+        { x: new Date(2022, 9), y: monthlyCost[9] },
     ]
     const options = {
         animationEnabled: true,
@@ -38,23 +45,22 @@ const ExpenditureOverviewContainer = (costObj) => {
             prefix: "$"
         },
         data: [{
-            yValueFormatString: "$#,###.00",
+            yValueFormatString: "$#,##0.00",
             xValueFormatString: "MMMM",
             type: "spline",
-            color: "pink",
+            color: "#5585b5",
             dataPoints: data
         }]
     }
     
-
     return(
         <div class="overview-container">          
-            <h1>Expenditure Overview Container</h1>
+            <h1>Expenditure Overview</h1>
             <CanvasJSChart options = {options}
                 /* onRef = {ref => this.chart = ref} */
             />  
             <section className='statistics'>
-                <p>Total expenditure: ${total}</p>
+                <p>Total expenditure: ${total.toFixed(2)}</p>
                 <p>Average expenditure: ${(total/costArray.length).toFixed(2)}</p>
             </section>
         </div>

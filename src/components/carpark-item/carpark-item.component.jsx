@@ -124,14 +124,14 @@ const CarParkItem = ({carpark}) => {
             {isOpen&& <PopupComponent className = "desc" handleClose ={togglePopup} children = {
                         <div>
                             <Map carpark={carpark}/>
-                            <h3>Area: {Area}</h3>
-                            <h3>Development: {Development}</h3>
+                            <h2>Area: {Area}</h2>
+                            <h2>Development: {Development}</h2>
                             <h3>Available Normal Lots: {normal}</h3>
                             <h3>Available Heavy Vehicle Lots: {heavy}</h3>
                             <h3>Available Motorcycle Lots: {motorcycle}</h3>
-                            <p>Agency: {Agency}</p>
-                            <button className="favourite-btn">Favourite</button>
+                            <h2>Agency: {Agency}</h2>
                             <h3 className="prediction">Predicted Lots for next 30mins: {predicted.Y},{predicted.H},{predicted.C} </h3>
+                            <button className="favourite-btn">Favourite</button>
                         </div>
                     }/>}
         </div>

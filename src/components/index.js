@@ -14,6 +14,8 @@ import LocationButton from './location-button/location-button.component'
 import Map from './map/map.component'
 import ExpenditureRecord from "./expenditure-record/expenditure-record.component";
 import ExpenditureOverviewContainer from "./expenditure-overview-container/expenditure-overview-container.component";
+import ChangePassword from "./change-password/change-password.component";
+import CostCalculator from "./cost-calculator/cost-calculator.component";
 
 export {
     SearchBar, 
@@ -31,6 +33,8 @@ export {
     ExpenditureOverviewContainer,
     TrafficContainer,
     LocationButton,
-    Map
+    Map,
+    CostCalculator,
+    ChangePassword
 }
 

@@ -17,14 +17,15 @@ const Menu = () => {
     setErrorMessage("");
     e.currentTarget.disabled = true;
     try {
-      const data = await LogOutUser(token);
-      setUser(null);
+      await LogOutUser(token);
+      setUser([]);
       setToken("");
       setIsAuthenticated(false);
     } catch (err) {
-      console.log(err);
-      setErrorMessage(err.toString());
-      e.currentTarget.disabled = false;
+      setUser([]);
+      setToken("");
+      setIsAuthenticated(false);
+      setErrorMessage("You are already logged out from other device");
     }
   };
 

@@ -1,6 +1,6 @@
 import {Buffer} from 'buffer';
 const Map = ({carpark}) => {
-    const { AvailableLots, Development, Agency, Area, _id, CarParkID, Location} = carpark;
+    const { Development,Location} = carpark;
     const coords = Location.coordinates
     const str = `<p>${Development}</p><a href="https://google.com/maps?q=${coords[1]},${coords[0]}" target="_blank">Click here to open in google maps</a>`
     console.log(str)

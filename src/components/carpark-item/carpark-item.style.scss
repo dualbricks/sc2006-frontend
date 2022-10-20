@@ -12,11 +12,11 @@
 
 .favourite-btn{
     cursor: pointer;
-    position: absolute;
-    font-size: 30px;
+    position: relative;
+    font-size: 20px;
     border: 1px solid #000;
-    bottom: 16px;
-    right: 16px;
+    bottom: 10%;
+    left: 90%;
 }
 
 .more-info{
@@ -27,9 +27,6 @@
 .desc{
     padding-left: 10px;
 }
-
 .prediction{
-    position: absolute;
-    bottom: 16px;
-    left: 16px;
+    
 }

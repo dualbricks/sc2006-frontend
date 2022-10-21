@@ -2,11 +2,16 @@ import React from 'react';
 import { Button } from '..';
 import { addExpenditure } from '../../utils/db/expenditureTracker';
 import { useContext } from 'react';
-import { UserContext } from '../../contexts';
+import { UserContext, CarParkContext } from '../../contexts';
+import './cost-calculator.style.scss'
+import { Autocomplete, TextField } from '@mui/material';
 const CostCalculator = () => {
 
     const [startDate, setStartDate] = React.useState('');
     const {token} = useContext(UserContext);
+    const {carParkList} = useContext(CarParkContext);
+    console.log(carParkList);
+    const nameArray = carParkList.map((carPark)=>carPark.Development);
     const dateOnChangeHandler = (e) => {
         setStartDate(e.target.value);
     }
@@ -35,28 +40,30 @@ const CostCalculator = () => {
         }
     }
     return (
-        <div className="costCalculator">
+        <div className="costCalculator container-lg">
             <form id='costForm' onSubmit={onCostCalculatorSubmit}>
-                <div className="carparkID">
-                    <label>CarPark ID </label>
-                    <input type="text" name="carparkID" required />
+                <div className="carpark">
+                    <Autocomplete
+                        disablePortal
+                        id="combo-box-demo"
+                        options={nameArray}
+                        sx={{ width: 300 }}
+                        renderInput={(params) => <TextField {...params} label="Carpark Name" required/>}
+                    />
                 </div>
                 
                 <div className="startTime">
-                    <label>Start Date: </label>
-                    <input type="date" name="startDate" onChange={dateOnChangeHandler} required />
-                    <label>Start Time: </label>
-                    <input type="time" name="stime" min="00:00" max="23:59" required />
+                    <TextField type="date" name="startDate" onChange={dateOnChangeHandler} label="Start Date" required />
+                    <TextField type="time" name="stime" min="00:00" max="23:59" label="Start Time" required />
                 </div>
                 <div className="endTime">
-                    <label>End Date: </label>
-                    <input type="date" name="endDate" min={startDate}  required />
-                    <label>End Time: </label>
-                    <input type="time" name="etime" min="00:00" max="23:59" required />
+
+                    <TextField type="date" name="endDate" min={startDate}  required label="End Date"/>
+    
+                    <TextField type="time" name="etime" min="00:00" max="23:59" required label="End TIme"/>
                 </div>
                 <div className="cost">
-                    <label>Cost: </label>
-                    <input type="number" min="0" step="any" name="cost" required />
+                    <TextField type="number" min="0" step="any" name="cost" required label="cost"/>
                 </div>
                 <Button>
                     Save

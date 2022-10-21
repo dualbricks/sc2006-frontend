@@ -4,6 +4,7 @@ const Settings = () => {
     return(
         <>
             <ChangePassword/>
+            <CostCalculator/>
         </>
     )
 }

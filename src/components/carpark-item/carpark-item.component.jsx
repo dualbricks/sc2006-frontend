@@ -63,57 +63,7 @@ const CarParkItem = ({carpark}) => {
             }
         })
     }
-
-    //renders type C
-    const renderNormal = () => {
-        try{
-            if(AvailableLots[0].AvailableLots > 0){
-                return AvailableLots[0].AvailableLots;
-            }else{
-                return 0;
-            }
-        }catch{
-            return 0;
-        }
-    }
-
-    //renders type H
-    const renderHeavy = () => {
-        try{
-            if(AvailableLots[1].AvailableLots > 0){
-                return AvailableLots[1].AvailableLots;
-            }else{
-                return 0;
-            }
-        }catch{
-            return 0;
-        }
-    }
-    //Renders Type Y
-    const renderMotorcycle = () => {
-        try{
-            if(AvailableLots[2].AvailableLots > 0){
-                return AvailableLots[2].AvailableLots;
-            }else{
-                return 0;
-            }
-        }catch{
-            return 0;
-        }
-    }
-    //render Area
-    const renderArea = () => {
-        try{
-            if(Area != ""){
-                return Area;
-            }else{
-                return "";
-            }
-        }catch{
-            return "";
-        }
-    }
-
+    
     return (
         <div className="carpark-container" key={_id}>
             <main>

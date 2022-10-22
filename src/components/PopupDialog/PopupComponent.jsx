@@ -13,14 +13,19 @@ import {red} from '@mui/material/colors';
 import CalculateIcon from '@mui/icons-material/Calculate';
 const PopupComponent = ({carpark, isOpen, closeHander, innerToggler, predicted, normal, heavy, motorcycle}) => {
     const {Area, Development, Agency, } = carpark;
-    const {user, token, setUser} = useContext(UserContext)
-    console.log(carpark.CarParkID)
-    const isSaved = user.savedList.includes(carpark.CarParkID);
-    console.log(isSaved)
-    const [isfav, setIsfav] = React.useState(isSaved);
+    const {user, token, setUser, isAuthenticated} = useContext(UserContext)
+
+    const [isfav, setIsfav] = React.useState(false);
     const [disabled, setDisabled] = useState(false);
     const [isDesktop, setIsDesktop] = useState(window.innerWidth > 650);
 
+
+    useEffect(()=> {
+        if(user) {
+            const fav = user.savedList.includes(carpark.CarParkID);
+            setIsfav(fav);
+        }
+    },[])
 
     const updateMedia = () => { 
         setIsDesktop(window.innerWidth > 600);
@@ -104,7 +109,7 @@ const PopupComponent = ({carpark, isOpen, closeHander, innerToggler, predicted, 
                     >
                     <FavoriteIcon />
                 </IconButton>
-                <IconButton
+                {isAuthenticated && <IconButton
                         sx={{
                         position: 'absolute',
                         right: 50,
@@ -116,6 +121,8 @@ const PopupComponent = ({carpark, isOpen, closeHander, innerToggler, predicted, 
                     >
                     <CalculateIcon/>
                     </IconButton>
+                    }
+                
                 
                 </div>
             </Paper>): (<Paper className='paper-popup'>
@@ -160,7 +167,7 @@ const PopupComponent = ({carpark, isOpen, closeHander, innerToggler, predicted, 
                     >
                     <FavoriteIcon />
                     </IconButton>
-                    <IconButton
+                    {isAuthenticated && <IconButton
                         sx={{
                         position: 'absolute',
                         right: 50,
@@ -169,10 +176,10 @@ const PopupComponent = ({carpark, isOpen, closeHander, innerToggler, predicted, 
                         }}
                     size="large"
                     onClick={toggler}
-                
                     >
                     <CalculateIcon/>
                     </IconButton>
+                    }
                 </div>
             </Paper>)}
         </Dialog>

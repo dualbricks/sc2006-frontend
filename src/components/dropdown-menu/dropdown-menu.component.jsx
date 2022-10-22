@@ -1,7 +1,8 @@
 import './dropdown-menu.style.scss'
-import { Button, Menu, SignInForm, SignUpForm } from '..'
+import { Menu, SignInForm, SignUpForm } from '..'
 import { useContext,useState } from 'react'
 import { UserContext } from '../../contexts'
+import { Container } from 'react-bootstrap'
 const textList = ['Click here to sign Up', 'Already have an account? click here']
 
 const DropdownMenu = () => {
@@ -16,11 +17,14 @@ const DropdownMenu = () => {
     } 
     
     return (
-        <div className='dropdown-container'>
-            {isAuthenticated ? (<Menu/>) : (signUpField ? <SignUpForm/>: (<SignInForm/>))}
-            {!isAuthenticated && <h2 className='text-btm'onClick={onSubmit}>{text}</h2> }
-            
-        </div>
+
+        <Container className='container dropdown-menu dropdown-container border border-dark align-center rounded' >
+            <div >
+             {isAuthenticated ? (<Menu/>) : (signUpField ? <SignUpForm/>: (<SignInForm/>))}
+             {!isAuthenticated && <p className='text-btm'onClick={onSubmit}>{text}</p> }
+            </div>
+        </Container>
+           
     )
 }
 

@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../contexts";
 import { LogOutUser } from "../../utils/db";
+import { Button } from "@mui/material";
 import "./menu.style.scss";
 
 const Menu = () => {
@@ -31,20 +32,29 @@ const Menu = () => {
 
   //
   return (
-    <div className="menu">
-      <Link to="/settings">
-        <button className="menu-button">Account</button>
-      </Link>
-      <Link to="/expenditure">
-        <button className="menu-button">Expenditure</button>
-      </Link>
-      <Link to="/traffic">
-        <button className="menu-button">Traffic</button>
-      </Link>
+    <div className="container">
+      <div className="align-center">
+        <div className="row">
+
+        </div>
+        <div className="row">
+          <Button className="menu-button" href="/settings" variant="contained" size="large">Account</Button>
+        </div>
+        <div className="row">
+         <Button className="menu-button" href="/expenditure" variant="contained" size="large">Expenditure</Button>
+        </div>
+        <div className="row">
+         <Button className="menu-button" href="/traffic" variant="contained" size="large">Traffic</Button>
+        </div>
+        <div className="row">
+        <Button className="menu-button"  variant="contained" onClick={onLogout} size="large">
+          Logout
+        </Button>
+        </div>
+
+      </div>
+    
       <p>{errorMessage}</p>
-      <button className="menu-button" onClick={onLogout}>
-        Logout
-      </button>
     </div>
   );
 };

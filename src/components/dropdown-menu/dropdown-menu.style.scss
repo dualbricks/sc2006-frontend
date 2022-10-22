@@ -1,25 +1,14 @@
 .dropdown-container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    height: 420px;
+    width: 280px;
     position: absolute;
-    width: 240px;
-    height: 340px;
-    display: flex;
     flex-direction: column;
-    padding: 20px;
-    border: 1px solid black;
+    padding: auto;
     background-color: white;
-    top: 90px;
+    top:90px;
     right: 40px;
     z-index: 5;
-  
-    button {
-      margin-top: auto;
-      font-size: 12px;
-    }
-    .text-btm {
-      text-decoration: underline;
-      color: black;
-    }
-    .text-btm:hover {
-      color: blue;
-    }
-  }
+
+}

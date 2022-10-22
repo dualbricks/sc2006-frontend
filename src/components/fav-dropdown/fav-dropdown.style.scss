@@ -1,18 +1,17 @@
-.dropdown-container {
+.fav-dropdown {
     margin-top: 20px;
     margin-bottom: 20px;
-    height: 400px;
+    height: 420px;
     width: 280px;
     position: absolute;
-    flex-direction: column;
     padding: auto;
     background-color: white;
     top:90px;
     right: 40px;
     z-index: 5;
-    .menu-button {
-        padding: 12px;
-        margin: 9px;
+    overflow: scroll;
+    .fav-items {
+        display: flex;
+        overflow: scroll;
     }
-
 }

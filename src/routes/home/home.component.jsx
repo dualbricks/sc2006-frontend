@@ -3,6 +3,7 @@ import  {LocationButton, ResultContainer, SearchBar}  from '../../components';
 import { useEffect, useState, useContext } from 'react';
 import { CarParkContext } from '../../contexts';
 import { fetchCarParksByLocation, fetchCarParksByPostalCode } from '../../utils/db/fetchCarPark';
+
 import './home.style.scss'
 
 const Home = () => {
@@ -50,7 +51,7 @@ const Home = () => {
                     setfilterCarParkList([]);
                 }
             }else {
-                const newCarParks = carParkList.filter((carpark)=>carpark.Development.toLocaleLowerCase().includes(text))
+                const newCarParks = carParkList.filter((carpark)=>carpark.Development.toLocaleLowerCase().includes(text.toLocaleLowerCase()))
                 if(newCarParks.length === 0) {
                     setError('No carpark found');
                 }else {
@@ -70,7 +71,7 @@ const Home = () => {
     return (
         <div className='container-lg'>
             <Outlet/>
-            <div className='search-container text-center'>
+            <div className='search-container text-center container'>
                 <SearchBar text={text} setText={setText} setLocation={setLocation}/>
                 <LocationButton setlocation={setLocation}/>
             </div>

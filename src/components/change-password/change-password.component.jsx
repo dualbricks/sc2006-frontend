@@ -46,7 +46,6 @@ const ChangePassword = () => {
                     <label>Confirm New Password </label>
                     <input type="password" id="confirmNewPassword" name="currentpass2" required />
                 </div>
-
                 <Button>
                     Confirm Change
                 </Button>

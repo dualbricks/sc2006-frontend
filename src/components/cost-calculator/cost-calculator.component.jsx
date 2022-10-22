@@ -1,75 +1,219 @@
 import React from 'react';
-import { Button } from '..';
 import { addExpenditure } from '../../utils/db/expenditureTracker';
 import { useContext } from 'react';
 import { UserContext, CarParkContext } from '../../contexts';
 import './cost-calculator.style.scss'
-import { Autocomplete, TextField } from '@mui/material';
-const CostCalculator = () => {
+import { Autocomplete, Dialog, Paper, TextField} from '@mui/material';
+import {LoadingButton} from '@mui/lab';
+import  SaveIcon  from '@mui/icons-material/Save'
+import { useState } from 'react';
+import { Form } from 'react-bootstrap';
+import IconButton from "@mui/material/IconButton";
+import CloseIcon from '@mui/icons-material/Close';
+import { useEffect } from 'react';
 
-    const [startDate, setStartDate] = React.useState('');
+
+const CostCalculator = ({isOpen, closeHandler, carParkID}) => {
+
+    const [startDate, setStartDate] = useState('');
     const {token} = useContext(UserContext);
     const {carParkList} = useContext(CarParkContext);
-    console.log(carParkList);
-    const nameArray = carParkList.map((carPark)=>carPark.Development);
-    const dateOnChangeHandler = (e) => {
-        setStartDate(e.target.value);
-    }
+    const [loading, setLoading] = useState(false)
+    const [carPark, setCarPark] = useState({});
+    const [cost, setCost] = useState(0);
+    const [startTime, setStartTime] = useState('');
+    const [endTime, setEndTime] = useState('');
+    const [endDate, setEndDate] = useState('');
+    const [specific, setSpecific] = useState(false);
 
+    useEffect(()=>{
+        if(carParkID) {
+            setSpecific(true);
+        }
+
+    },[])
+    const nameArray = carParkList.map((carPark)=>{
+         const option ={
+             carpark: carPark.Development,
+             id: carPark.CarParkID
+         }
+
+         return option
+     });
+
+     const defaultOption = {
+         options: nameArray,
+         getOptionLabel: (option) => option.carpark,
+         isOptionEqualToValue: (option, value) => option.id === value.id,
+     }
+    // reset all form states in costForm
+    const resetAll = () => {
+        setStartDate('');
+        setEndDate('');
+        setStartTime('');
+        setEndTime('');
+        setCost(0);
+        setCarPark({});
+    }
     const onCostCalculatorSubmit = async (e) => {
+        console.log("submit");
         e.preventDefault();
-        const startDateTime = new Date(startDate + ' ' + document.getElementsByName('stime')[0].value);
-        const endDateTime = new Date(document.getElementsByName('endDate')[0].value + ' ' + document.getElementsByName('etime')[0].value);
+        const startDateTime = new Date(startDate + ' ' + startTime);
+        const endDateTime = new Date(endDate+' '+endTime);
         const diff = endDateTime.getTime() - startDateTime.getTime();
         if(diff < 0) {
             alert('End date and time should be greater than start date and time');
             return;
         }
-        const expenditureRecord = {
-            carParkID: document.getElementsByName('carparkID')[0].value,
-            startTime: startDateTime,
-            endTime: endDateTime,
-            cost: document.getElementsByName('cost')[0].value,
+        let  expenditureRecord = {}
+        if(specific) {
+             expenditureRecord = {
+                carParkID: carParkID,
+                startTime: startDateTime,
+                endTime: endDateTime,
+                cost: cost,
+            }
+
+        }else {
+             expenditureRecord = {
+                carParkID: carPark.id,
+                startTime: startDateTime,
+                endTime: endDateTime,
+                cost: cost,
+            }
         }
+
         try{
+            setLoading(true);
             await addExpenditure(token, expenditureRecord);
             alert('expense added successfully');
-            document.getElementById('costForm').reset();
+            setLoading(false);
+            resetAll();
         }catch(e) {
             alert(e);
+            setLoading(false);
         }
     }
     return (
-        <div className="costCalculator container-lg">
-            <form id='costForm' onSubmit={onCostCalculatorSubmit}>
-                <div className="carpark">
+        
+        <Dialog variant="outlined"
+            open={isOpen}
+            maxWidth="sm"
+            onClose={closeHandler} 
+        
+        >
+            {specific ? (<Paper className='border rounded'>
+            <Form id='costForm' onSubmit={onCostCalculatorSubmit}>
+                <Form.Group className="mb-3">
+                    <TextField type="text" name='id' value={carParkID} label="Car Park ID" variant="outlined" disabled/>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                    <TextField type="date" name="startDate" onChange={(e)=>setStartDate(e.target.value)} value={startDate} label="Start Date" required />
+                    <TextField type="time" name="stime"  onChange={(e)=>setStartTime(e.target.value)} value={startTime} min="00:00" max="23:59" label="Start Time" required />
+
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <TextField type="date" name="endDate" min={startDate} onChange={(e)=>setEndDate(e.target.value)} value={endDate} required label="End Date"/>
+                    <TextField type="time" name="etime" min="00:00" max="23:59" onChange={(e)=>setEndTime(e.target.value)} value={endTime} required label="End TIme"/>
+                    
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <TextField type="number" min="0" step="any" name="cost" onChange={(e)=>setCost(e.target.value)} value={cost} required label="cost"/>
+                    
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <LoadingButton 
+                        size="large"
+                        loadingPosition='start'
+                        loading={loading}
+                        startIcon={<SaveIcon/>} 
+                        variant='outlined'
+                        form='costForm'
+                        type='submit'
+                        >
+                        Save
+                    </LoadingButton>
+                </Form.Group>   
+            </Form>
+            <IconButton
+                aria-label="close"
+                onClick={closeHandler}
+                sx={{
+                    position: 'absolute',
+                    right: 8,
+                    top: 8,
+                color: (theme) => theme.palette.grey[500],
+            }}
+            >
+                <CloseIcon />
+            </IconButton>
+        </Paper>) : (<Paper className='border rounded'>
+            <Form id='costForm' onSubmit={onCostCalculatorSubmit}>
+                <Form.Group className="mb-3">
                     <Autocomplete
                         disablePortal
                         id="combo-box-demo"
-                        options={nameArray}
+                        {...defaultOption}
                         sx={{ width: 300 }}
-                        renderInput={(params) => <TextField {...params} label="Carpark Name" required/>}
+                        value={carPark}
+                        onChange={(event, newValue) => {
+                            setCarPark(newValue);
+                        }}
+                        renderInput={(params) => <TextField {...params}
+                            onInput={(e)=>setCarPark(e.target.value)} 
+                            label="Carpark Name" required/>}
                     />
-                </div>
-                
-                <div className="startTime">
-                    <TextField type="date" name="startDate" onChange={dateOnChangeHandler} label="Start Date" required />
-                    <TextField type="time" name="stime" min="00:00" max="23:59" label="Start Time" required />
-                </div>
-                <div className="endTime">
 
-                    <TextField type="date" name="endDate" min={startDate}  required label="End Date"/>
-    
-                    <TextField type="time" name="etime" min="00:00" max="23:59" required label="End TIme"/>
-                </div>
-                <div className="cost">
-                    <TextField type="number" min="0" step="any" name="cost" required label="cost"/>
-                </div>
-                <Button>
-                    Save
-                </Button>
-            </form>
-        </div>
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <TextField type="date" name="startDate" onChange={(e)=>setStartDate(e.target.value)} value={startDate} label="Start Date" required />
+                    <TextField type="time" name="stime"  onChange={(e)=>setStartTime(e.target.value)} value={startTime} min="00:00" max="23:59" label="Start Time" required />
+
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <TextField type="date" name="endDate" min={startDate} onChange={(e)=>setEndDate(e.target.value)} value={endDate} required label="End Date"/>
+                    <TextField type="time" name="etime" min="00:00" max="23:59" onChange={(e)=>setEndTime(e.target.value)} value={endTime} required label="End TIme"/>
+                    
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <TextField type="number" min="0" step="any" name="cost" onChange={(e)=>setCost(e.target.value)} value={cost} required label="cost"/>
+                    
+                </Form.Group>
+
+                <Form.Group className="mb-3">
+                    <LoadingButton 
+                        size="large"
+                        loadingPosition='start'
+                        loading={loading}
+                        startIcon={<SaveIcon/>} 
+                        variant='outlined'
+                        form='costForm'
+                        type='submit'
+                        >
+                        Save
+                    </LoadingButton>
+                </Form.Group>   
+            </Form>
+            <IconButton
+                aria-label="close"
+                onClick={closeHandler}
+                sx={{
+                    position: 'absolute',
+                    right: 8,
+                    top: 8,
+                color: (theme) => theme.palette.grey[500],
+            }}
+            >
+                <CloseIcon />
+            </IconButton>
+        </Paper>)}
+    </Dialog>
     );
 };
 

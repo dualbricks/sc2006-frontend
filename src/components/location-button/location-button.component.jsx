@@ -1,5 +1,6 @@
 import './location-button.style.scss'
-import {Button} from '../index'
+import { IconButton } from '@mui/material';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
 const LocationButton = ({setlocation})=> {
     //onClick function
     const onGeoButtonClick = () => {
@@ -14,9 +15,10 @@ const LocationButton = ({setlocation})=> {
         })
     }
     return (
-        <div className="location-button-container">
-            <Button className="location-button" onClick={onGeoButtonClick}/>
-        </div>
+            <IconButton onClick={onGeoButtonClick}> 
+                <LocationOnIcon/>
+            </IconButton>
+
     )
 
 }

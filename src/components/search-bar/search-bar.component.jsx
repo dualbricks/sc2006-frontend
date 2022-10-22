@@ -1,12 +1,16 @@
-import FormInput from '../form-input/form-input.component'
 
+import SearchIcon from '@mui/icons-material/Search';
+import { Input, InputAdornment } from '@mui/material';
 const SearchBar = ({text, setText, setLocation, ...otherStuff}) => {
     const handleChange = (e) => {
         setText(e.target.value);
         setLocation({});
     }
     return (
-        <FormInput onChange={handleChange} name='enter address/postal code' value={text} />
+        <Input fullWidth placeholder='Search' value={text} onChange={handleChange} endAdornment={<InputAdornment position='end'>
+            <SearchIcon/>
+        </InputAdornment>} {...otherStuff}/>
+        
     )
     
 }

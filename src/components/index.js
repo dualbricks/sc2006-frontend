@@ -16,7 +16,10 @@ import ExpenditureRecord from "./expenditure-record/expenditure-record.component
 import ExpenditureOverviewContainer from "./expenditure-overview-container/expenditure-overview-container.component";
 import ChangePassword from "./change-password/change-password.component";
 import CostCalculator from "./cost-calculator/cost-calculator.component";
-
+import TrafficListContainer from './traffic-list-container/traffic-list-container'
+import BigImageContainer from './big-image-container/big-image-container'
+import NavIcon from './nav-icon/nav-icon.component'
+import FavDropdown from './fav-dropdown/fav-dropdown.component'
 export {
     SearchBar, 
     CarParkItem,
@@ -35,6 +38,11 @@ export {
     LocationButton,
     Map,
     CostCalculator,
-    ChangePassword
+    ChangePassword,
+    TrafficListContainer,
+    BigImageContainer,
+    NavIcon,
+    FavDropdown
+    
 }
 

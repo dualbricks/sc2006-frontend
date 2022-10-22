@@ -2,7 +2,8 @@ import { useState, useContext } from "react"
 import { SignUpUserWithEmailAndPassword } from "../../utils/db";
 import {FormInput, Button} from '../index'
 import { UserContext } from "../../contexts";
-
+import { TextField } from "@mui/material";
+import './sign-up-form.style.scss'
 const defaultFormFields = {
     email: '',
     password: '',
@@ -48,16 +49,16 @@ const SignUpForm = () => {
     }
     // main display
     return (
-        <div className="sign-in-container">
+        <>
             <span>Sign up with your email and password</span>
             <form onSubmit={handleSubmit}>
-                <FormInput  label='Email' type='email' required onChange={handleChange} name='email' value={email}/>
-                <FormInput  label='Password' type='password' required onChange={handleChange} name='password' value={password}/>
-                <FormInput  label='Confirm Password' type='password' required onChange={handleChange} name='confirmPassword' value={confirmPassword}/>
+                <TextField  label='Email' type='email' required onChange={handleChange} name='email' value={email}/>
+                <TextField  label='Password' type='password' required onChange={handleChange} name='password' value={password}/>
+                <TextField  label='Confirm Password' type='password' required onChange={handleChange} name='confirmPassword' value={confirmPassword}/>
                 <p className="error">{errorMessage}</p>
                 <Button>Sign Up</Button>
             </form>
-        </div>
+        </>
     )
 }
 

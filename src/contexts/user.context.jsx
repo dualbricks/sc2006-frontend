@@ -9,7 +9,9 @@ export const UserContext = createContext({
     isIconOpen: false,
     setIsIconOpen: ()=>{},
     isAuthenticated: false,
-    setIsAuthenticated: ()=> {}
+    setIsAuthenticated: ()=> {},
+    isFavIconOpen: false,
+    setIsFavIconOpen: ()=>{},
 })
 
 
@@ -17,8 +19,9 @@ export const UserProvider = ({children})=>{
     const [token, setToken] = useSessionStorage('token', '');
     const [user, setUser] = useSessionStorage('user', null);
     const [isIconOpen, setIsIconOpen] = useState(false);
+    const [isFavIconOpen, setIsFavIconOpen] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useSessionStorage('authenticated', false)
-    const value = { token, user, setUser, setToken,isIconOpen, setIsIconOpen, isAuthenticated, setIsAuthenticated}
+    const value = { token, user, setUser, setToken,isIconOpen, setIsIconOpen, isAuthenticated, setIsAuthenticated,isFavIconOpen, setIsFavIconOpen}
 
 
     return (

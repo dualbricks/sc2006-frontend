@@ -1,33 +1,28 @@
 import { Fragment, useContext } from "react"
 import {Outlet,Link} from 'react-router-dom'
 import './navigation.style.scss'
-import { DropdownMenu, UserIcon } from "../../components"
+import { DropdownMenu, NavIcon, UserIcon, FavDropdown } from "../../components"
 import { UserContext } from "../../contexts"
-
+import {Box, AppBar, Toolbar, Typography, Button, IconButton, MenuItem, Menu} from '@mui/material'
 
 const Navigation = () => {
-    const {user,isIconOpen}  = useContext(UserContext)
+    const {user,isIconOpen, isFavIconOpen, isAuthenticated}  = useContext(UserContext)
     console.log(user);
     return (
         <Fragment>
-            <div className="navigation">
-                <Link className='logo-container' to='/'>
-                    <p>Home</p>
-                </Link>
-                <div className="nav-links-container">
-                    <Link className="nav-link" to='/traffic'>
-                        Traffic Image
-                    </Link>
-                    <Link className="nav-link" to='/expenditure'>
-                        expenditure
-                    </Link>
-                    <Link className="nav-link" to='/settings'>
-                        settings
-                    </Link>
-                </div>
-                <UserIcon/>
-               { isIconOpen && <DropdownMenu/>}
-            </div>
+            <Box sx={{flexGrow:1}}>
+                <AppBar position="static">
+                    <Toolbar>
+                        <Typography variant="h6" color="textPrimary" component={Link} to='/' sx={{flexGrow:1, textDecoration:"none", boxShadow:"none"}}>
+                            SG ParkWhere
+                        </Typography>
+                        { isAuthenticated && <NavIcon icon="favorite" text="Favourite"/>}
+                        <UserIcon/>
+                    </Toolbar>
+                </AppBar>
+            </Box>
+            { isIconOpen && <DropdownMenu/>}
+            {isFavIconOpen && <FavDropdown/>}
             <Outlet />
         </Fragment>
     )

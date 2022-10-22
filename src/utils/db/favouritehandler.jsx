@@ -2,12 +2,13 @@ import axios from "axios";
 
 export const favouriteHandler = async (token, options, state) => {
     axios.defaults.headers.post['Authorization'] = `Bearer ${token}`;
-    if(state) {
+    if(!state) {
         try {
             const data = await fetchHelper('/users/me/save', options);
             return data
         }catch(e) {
-            alert(e);
+            console.log(e)
+            throw new Error(e);
         }
     }
     else {
@@ -15,7 +16,8 @@ export const favouriteHandler = async (token, options, state) => {
             const data = await fetchHelper('/users/me/remove', options);
             return data
         }catch(e) {
-            alert(e);
+            console.log(e)
+            throw new Error(e);
         }
     }
 
@@ -26,7 +28,8 @@ const fetchHelper = async(url, options) => {
         const {data} = await axios.post(url, options);
         return data;
     }catch(e) {
-        return e.data;
+        console.log(e)
+        throw new Error(e.response.data);
     }
     
 }

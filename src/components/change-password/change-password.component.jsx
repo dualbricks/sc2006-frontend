@@ -1,27 +1,31 @@
 import React from 'react';
-import { Button } from '..';
 import { UpdatePassword } from '../../utils/db/changePassword';
 import { UserContext } from '../../contexts';
-import { useContext } from 'react';
-
-
+import { useContext, useState } from 'react';
+import { Box, Paper, TextField } from '@mui/material';
+import { Form } from 'react-bootstrap';
+import {LoadingButton} from '@mui/lab';
+import IconButton from "@mui/material/IconButton";
+import  SaveIcon  from '@mui/icons-material/Save'
 
 const ChangePassword = () => {
     const {token} = useContext(UserContext);
-
+    const [oldPassword, setOldPassword] = useState('');
+    const [newPassword, setNewPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [loading, setLoading] = useState(false);
     async function handleChangeClick(e) {
-        var oldP = document.getElementById("currentPassword");
-        var newP = document.getElementById("newPassword");
-        var confirmP = document.getElementById("confirmNewPassword");
-    
+        setLoading(true);
         e.preventDefault();
-        if(newP.value !== confirmP.value){
-            alert("New Password and Confirm New Password do not match");
+        if (newPassword !== confirmPassword) {
+            alert("Passwords do not match");
+            setLoading(false);
             return;
         }
+
         const options = {
-            oldPassword: oldP.value,
-            password: confirmP.value
+            oldPassword: oldPassword,
+            password: confirmPassword
         }
         const response = await UpdatePassword(options, token);
         if(!response) alert("please check your password again");
@@ -29,28 +33,37 @@ const ChangePassword = () => {
 
             alert("Password Changed Successfully")
         };
+        setLoading(false);
     }
 
     return (
-        <div className="ChangePassword">
-            <form className="changePassword-Form" onSubmit={handleChangeClick} >
-                <div className="currentPassword">
-                    <label>Current Password </label>
-                    <input type="password" id="currentPassword" name="currentpass" required />
-                </div>
-                <div className="newPassword">
-                    <label>New Password </label>
-                    <input type="password" id="newPassword" name="currentpass1" required />
-                </div>
-                <div className="confirmNewPassword">
-                    <label>Confirm New Password </label>
-                    <input type="password" id="confirmNewPassword" name="currentpass2" required />
-                </div>
-                <Button>
-                    Confirm Change
-                </Button>
-            </form>
-        </div>
+        <Box textAlign='center' marginTop="20">
+            <Paper>
+            <Form id="changePasswordForm" onSubmit={handleChangeClick}>
+                <Form.Group className="mb-3" controlId="currentPassword">
+                    <TextField type="password" label="Current Password" value={oldPassword} onChange={(e)=>{setOldPassword(e.target.value)}}variant="outlined"  required/>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="newPassword">
+                    <TextField type="password" label="New Password" value={newPassword} onChange={(e)=>{setNewPassword(e.target.value)}} variant="outlined" required/>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="confirmNewPassword">
+                    <TextField type="password" label="Confirm New Password" value={confirmPassword} onChange={(e)=>{setConfirmPassword(e.target.value)}} variant="outlined" required/>
+                </Form.Group>
+                    <LoadingButton 
+                        size="large"
+                        loadingPosition='start'
+                        loading={loading}
+                        startIcon={<SaveIcon/>} 
+                        variant='outlined'
+                        form='changePasswordForm'
+                        type='submit'
+                        >
+                        Change Password
+                    </LoadingButton>
+            </Form>
+            </Paper>
+        </Box>
+        
     );
 };
 

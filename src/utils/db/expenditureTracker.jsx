@@ -38,3 +38,27 @@ export const getExpendituresByYear = async (token, year) => {
         throw new  Error(e.response.data);
     }
 }
+
+// delete expenditure
+export const deleteExpenditure = async (token, id) => {
+    axios.defaults.headers.delete['Authorization'] = `Bearer ${token}`;
+    try {
+        const {data} = await axios.delete(`/e/${id}`);
+        return data;
+
+    }catch(e) {
+        throw new  Error(e.response.data);
+    }
+}
+
+// update expenditure
+export const updateExpenditure = async (token, id, expenditure) => {
+    axios.defaults.headers.patch['Authorization'] = `Bearer ${token}`;
+    try {
+        const {data} = await axios.patch(`/e/${id}`, expenditure);
+        return data;
+
+    }catch(e) {
+        throw new  Error(e.response.data);
+    }
+}

@@ -20,6 +20,8 @@ import TrafficListContainer from './traffic-list-container/traffic-list-containe
 import BigImageContainer from './big-image-container/big-image-container'
 import NavIcon from './nav-icon/nav-icon.component'
 import FavDropdown from './fav-dropdown/fav-dropdown.component'
+import AvailabilityIcon from './availiability-icon/availability-icon.component'
+import CarparkCard from './carpark-card/carpark-card.component'
 export {
     SearchBar, 
     CarParkItem,
@@ -42,7 +44,8 @@ export {
     TrafficListContainer,
     BigImageContainer,
     NavIcon,
-    FavDropdown
-    
+    FavDropdown,
+    AvailabilityIcon,
+    CarparkCard
 }
 

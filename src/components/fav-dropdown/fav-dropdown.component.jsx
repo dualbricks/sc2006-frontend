@@ -1,23 +1,35 @@
-'./fav-dropdown.style.scss'
-import { Paper } from "@mui/material"
+import './fav-dropdown.style.scss'
 import { Container } from "@mui/system"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { UserContext, CarParkContext } from "../../contexts"
 import {CarParkItem} from '../index.js'
 
-const FavDropdown = () => {
+const FavDropdown = () => {    
 
     const {user} = useContext(UserContext);
     const {carParkList} = useContext(CarParkContext);
-    console.log(user)
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth > 650);
+    const updateMedia = () => { 
+        setIsDesktop(window.innerWidth > 600);
+    }
+
+
+    useEffect(() => {
+        window.addEventListener("resize", updateMedia);
+        return () => window.removeEventListener("resize", updateMedia);
+    });
+
     const favList = carParkList.filter((carpark) => user.savedList.includes(carpark.CarParkID));
     return (
-        <Container className="fav-dropdown dropdown-container border dropdown-menu">
-            <Container className="fav-items">
-                {favList.map((carpark) => (<Paper><CarParkItem key={carpark.CarParkID} carpark={carpark}/></Paper>))}
-            </Container>
-            
-        </Container>
+        <>
+        {isDesktop ? (<Container className="fav-dropdown dropdown-container border dropdown-menu" maxWidth="md">
+        {       favList.map((carpark) => (<CarParkItem className="border"key={carpark.CarParkID} carpark={carpark}/>))}
+        </Container>):(<Container className="fav-dropdown dropdown-container border dropdown-menu" maxWidth="xs">
+        {       favList.map((carpark) => (<CarParkItem className="border"key={carpark.CarParkID} carpark={carpark}/>))}
+        </Container>)}
+        </>
+
+        
     )
 }
 

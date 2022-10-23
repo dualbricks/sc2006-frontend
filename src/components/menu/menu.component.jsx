@@ -6,7 +6,7 @@ import { LogOutUser } from "../../utils/db";
 import { Button } from "@mui/material";
 import "./menu.style.scss";
 
-const Menu = () => {
+const Menu = ({toggler}) => {
   // to implement logout
   const { setUser, setToken, setIsAuthenticated } = useContext(UserContext);
   const { token } = useContext(UserContext);
@@ -45,6 +45,9 @@ const Menu = () => {
         </div>
         <div className="row">
          <Button className="menu-button" href="/traffic" variant="contained" size="large">Traffic</Button>
+        </div>
+        <div className="row">
+         <Button className="menu-button" onClick={toggler} variant="contained" size="large">Cost Calculator</Button>
         </div>
         <div className="row">
         <Button className="menu-button"  variant="contained" onClick={onLogout} size="large">

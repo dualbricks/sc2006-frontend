@@ -11,6 +11,7 @@ import { UserContext } from '../../contexts';
 import { favouriteHandler } from '../../utils/db/favouritehandler';
 import {red} from '@mui/material/colors';
 import CalculateIcon from '@mui/icons-material/Calculate';
+
 const PopupComponent = ({carpark, isOpen, closeHander, innerToggler, predicted, normal, heavy, motorcycle}) => {
     const {Area, Development, Agency, } = carpark;
     const {user, token, setUser, isAuthenticated} = useContext(UserContext)
@@ -21,20 +22,21 @@ const PopupComponent = ({carpark, isOpen, closeHander, innerToggler, predicted, 
 
 
     useEffect(()=> {
-        if(user) {
+        if(user.length !== 0) {
             const fav = user.savedList.includes(carpark.CarParkID);
             setIsfav(fav);
         }
     },[])
+
+    const toggler = () => {
+        innerToggler();
+    }
 
     const updateMedia = () => { 
         setIsDesktop(window.innerWidth > 600);
     }
 
 
-    const toggler = () => {
-        innerToggler();
-    }
 
     useEffect(() => {
         window.addEventListener("resize", updateMedia);

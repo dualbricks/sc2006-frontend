@@ -19,13 +19,13 @@ const CostCalculator = ({isOpen, closeHandler, carParkID}) => {
     const {token} = useContext(UserContext);
     const {carParkList} = useContext(CarParkContext);
     const [loading, setLoading] = useState(false)
-    const [carPark, setCarPark] = useState({});
     const [cost, setCost] = useState(0);
     const [startTime, setStartTime] = useState('');
     const [endTime, setEndTime] = useState('');
     const [endDate, setEndDate] = useState('');
     const [specific, setSpecific] = useState(false);
-
+    const [autoCompleteValue, setAutoCompleteValue] = useState('');
+    
     useEffect(()=>{
         if(carParkID) {
             setSpecific(true);
@@ -41,10 +41,13 @@ const CostCalculator = ({isOpen, closeHandler, carParkID}) => {
          return option
      });
 
+     const [carPark, setCarPark] = useState(nameArray[0]);
+
      const defaultOption = {
          options: nameArray,
-         getOptionLabel: (option) => option.carpark,
-         isOptionEqualToValue: (option, value) => option.id === value.id,
+         getOptionLabel: (option) => option.carpark ? option.carpark : option,
+         isOptionEqualToValue: (option, value) => {
+           return option.id === value.id;} 
      }
     // reset all form states in costForm
     const resetAll = () => {
@@ -53,7 +56,7 @@ const CostCalculator = ({isOpen, closeHandler, carParkID}) => {
         setStartTime('');
         setEndTime('');
         setCost(0);
-        setCarPark({});
+        setCarPark(nameArray[0]);
     }
     const onCostCalculatorSubmit = async (e) => {
         console.log("submit");
@@ -75,6 +78,11 @@ const CostCalculator = ({isOpen, closeHandler, carParkID}) => {
             }
 
         }else {
+            if(!carPark.id) {
+
+                alert('Please select a valid carpark ');
+                return;
+            }
              expenditureRecord = {
                 carParkID: carPark.id,
                 startTime: startDateTime,
@@ -161,6 +169,10 @@ const CostCalculator = ({isOpen, closeHandler, carParkID}) => {
                         value={carPark}
                         onChange={(event, newValue) => {
                             setCarPark(newValue);
+                        }}
+                        inputValue={autoCompleteValue}
+                        onInputChange={(event, newInputValue) => {
+                            setAutoCompleteValue(newInputValue);
                         }}
                         renderInput={(params) => <TextField {...params}
                             onInput={(e)=>setCarPark(e.target.value)} 

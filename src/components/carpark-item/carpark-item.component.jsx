@@ -4,7 +4,8 @@ import { fetchAvailabilityByOptions } from '../../utils/db/fetchAvailabilityLog'
 import PopupComponent from '../PopupDialog/PopupComponent';
 import './carpark-item.style.scss';
 import { timeConverterForPrediction } from '../../utils/timeConverter';
-import { CostCalculator} from "../index"
+import { CostCalculator, CarparkCard} from "../index"
+
 
 const CarParkItem = ({carpark}) => {
     const [ isOpen, setIsOpen ] = useState(false);
@@ -12,11 +13,17 @@ const CarParkItem = ({carpark}) => {
     const [heavy, setHeavy] = useState(0);
     const [normal, setNormal] = useState(0);
     const [motorcycle, setMotorcycle] = useState(0);
-    const { AvailableLots, Development, Agency, Area, _id, CarParkID} = carpark;
+    const { AvailableLots, Development, _id, CarParkID} = carpark;
     const [isOpenInner, setIsOpenInner] = useState(false);
     // first render 
     useEffect(()=>{
-        setAvailability();
+        try{
+            setAvailability();
+
+        }catch(e) {
+            alert("Not able to fetch availability");
+        }
+        
     },[]);
     //getting predicted and carpark data 
     const getPredicted = async () => {
@@ -70,16 +77,11 @@ const CarParkItem = ({carpark}) => {
     }
     
     return (
-        <div className="carpark-container" key={_id}>
-            <main>
-                <h2>Location: {Development}</h2>
-                <p>Available Lots: {normal}</p>
-                <button className= "more-info" onClick={togglePopup}>More Info</button>
-            </main>
+        <div className="" key={_id}>
+            <CarparkCard Development={Development} normal={normal} heavy={heavy} motorcyle={motorcycle} onClick={togglePopup}/>
             {isOpen&& <PopupComponent className = "desc" carpark={carpark} isOpen={isOpen} innerToggler={innerToggler} closeHander ={togglePopup} predicted={predicted} normal={normal} heavy={heavy} motorcycle={motorcycle} />}
             {isOpenInner && <CostCalculator isOpen={isOpenInner} closeHandler={innerToggler} carParkID={CarParkID}/>}
-        </div>
-        
+        </div>    
     )
 }
 

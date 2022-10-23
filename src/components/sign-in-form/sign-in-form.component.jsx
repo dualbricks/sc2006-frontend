@@ -2,7 +2,7 @@ import { useState, useContext } from "react"
 import { SignInUserWithEmailAndPassword } from "../../utils/db";
 import {FormInput, Button} from '../index'
 import { UserContext } from "../../contexts";
-import { Container, TextField } from "@mui/material";
+import { Box, Container, TextField } from "@mui/material";
 import './sign-in-form.style.scss'
 
 const defaultFormFields = {
@@ -45,9 +45,10 @@ const SignInForm = () => {
     // main display
     return (
         <>
+            <Box textAlign="center">
             <div>
             <span>Already have an account?</span>
-            <span>Sign in with your email and password</span>
+            <span> Sign in with your email and password</span>
             </div>
 
 
@@ -55,8 +56,14 @@ const SignInForm = () => {
                 <TextField  label='Email' type='email' required onChange={handleChange} name='email' value={email}/>
                 <TextField  label='Password' type='password' required onChange={handleChange} name='password' value={password}/>
                 <p className="error">{errorMessage}</p>
-                <Button>Sign In</Button>
+                <Box textAlign="center">
+                    <Button>Sign In</Button>
+                </Box>
+                
             </form>
+
+            </Box>
+
         </>
        
         

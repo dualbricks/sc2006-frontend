@@ -21,7 +21,6 @@ const TrafficContainer = ({trafficImage}) => {
      <Paper
       sx={{
         p: 2,
-        margin: 2,
         maxWidth: 400,
         flexGrow: 1,
         backgroundColor: (theme) =>

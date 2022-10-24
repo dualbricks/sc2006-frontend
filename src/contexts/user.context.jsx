@@ -12,6 +12,8 @@ export const UserContext = createContext({
     setIsAuthenticated: ()=> {},
     isFavIconOpen: false,
     setIsFavIconOpen: ()=>{},
+    refresh: false,
+    setRefresh: ()=>{},
 })
 
 
@@ -21,7 +23,8 @@ export const UserProvider = ({children})=>{
     const [isIconOpen, setIsIconOpen] = useState(false);
     const [isFavIconOpen, setIsFavIconOpen] = useState(false);
     const [isAuthenticated, setIsAuthenticated] = useSessionStorage('authenticated', false)
-    const value = { token, user, setUser, setToken,isIconOpen, setIsIconOpen, isAuthenticated, setIsAuthenticated,isFavIconOpen, setIsFavIconOpen}
+    const [refresh, setRefresh] = useState(false);
+    const value = { token, user, setUser, setToken,isIconOpen, setIsIconOpen, isAuthenticated, setIsAuthenticated,isFavIconOpen, setIsFavIconOpen, refresh, setRefresh}
 
 
     return (

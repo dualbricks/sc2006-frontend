@@ -18,6 +18,7 @@ const Expenditure = () => {
     const dateNow = new Date();
     const lastestMonth  = dateNow.getFullYear() + '-' + (dateNow.getMonth() + 1);
     const lastestYear = dateNow.getFullYear();
+    const {refresh} = useContext(UserContext);
     //initialise records
     useEffect(() => {
         // fetch records from db
@@ -33,7 +34,7 @@ const Expenditure = () => {
         fetchRecords();
         // setRecords(records);
 
-    },[])
+    },[refresh])
     function handleInput (event) {
         setMonth(event.target.value);
     }
@@ -64,7 +65,6 @@ const Expenditure = () => {
         }
     }
     // fetch data based on year
-    console.log(yearRecords);
     return (
         <div className="container">
             <section className='overview-container'>

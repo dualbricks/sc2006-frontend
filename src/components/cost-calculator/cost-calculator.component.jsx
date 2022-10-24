@@ -1,5 +1,5 @@
 import React from 'react';
-import { addExpenditure } from '../../utils/db/expenditureTracker';
+import { addExpenditure, updateExpenditure } from '../../utils/db/expenditureTracker';
 import { useContext } from 'react';
 import { UserContext, CarParkContext } from '../../contexts';
 import './cost-calculator.style.scss'
@@ -13,25 +13,19 @@ import CloseIcon from '@mui/icons-material/Close';
 import { useEffect } from 'react';
 
 
-const CostCalculator = ({isOpen, closeHandler, carParkID}) => {
+const CostCalculator = ({isOpen, closeHandler, carParkID, record}) => {
 
-    const [startDate, setStartDate] = useState('');
+    const [startDate, setStartDate] = useState(record? new Date(record.startTime).toISOString().split('T')[0]: '');
     const {token} = useContext(UserContext);
     const {carParkList} = useContext(CarParkContext);
     const [loading, setLoading] = useState(false)
-    const [cost, setCost] = useState(0);
-    const [startTime, setStartTime] = useState('');
-    const [endTime, setEndTime] = useState('');
-    const [endDate, setEndDate] = useState('');
-    const [specific, setSpecific] = useState(false);
+    const [cost, setCost] = useState(record ? record.cost : 0);
+    const [startTime, setStartTime] = useState(record? new Date(record.startTime).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}).split(' ')[0]: '');
+    const [endTime, setEndTime] = useState(record? new Date(record.endTime).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}).split(' ')[0]:"");
+    const [endDate, setEndDate] = useState(record? new Date(record.endTime).toISOString().split('T')[0]: '');
+    const [specific, setSpecific] = useState(carParkID? true: false);
     const [autoCompleteValue, setAutoCompleteValue] = useState('');
-    
-    useEffect(()=>{
-        if(carParkID) {
-            setSpecific(true);
-        }
-
-    },[])
+    const {refresh, setRefresh} = useContext(UserContext);
     const nameArray = carParkList.map((carPark)=>{
          const option ={
              carpark: carPark.Development,
@@ -89,6 +83,21 @@ const CostCalculator = ({isOpen, closeHandler, carParkID}) => {
                 endTime: endDateTime,
                 cost: cost,
             }
+        }
+
+        if(record) {
+            try{
+                setLoading(true);
+                await updateExpenditure(token, record._id, expenditureRecord);
+                setLoading(false);
+                alert("Expenditure record updated successfully");
+                resetAll();
+                setRefresh(!refresh);
+            }catch(e) {
+                setLoading(false);
+                alert(e);
+            }
+            return;
         }
 
         try{

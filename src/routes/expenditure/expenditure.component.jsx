@@ -1,9 +1,9 @@
-import {ExpenditureOverviewContainer, ExpenditureRecord} from '../../components'
+import {ExpenditureListContainer, ExpenditureOverviewContainer} from '../../components'
 import { useContext, useEffect, useState } from 'react';
 import './expenditure.style.scss'
 import { UserContext } from '../../contexts';
 import { getExpenditures, getExpendituresByYear } from '../../utils/db/expenditureTracker';
-import { Button } from 'bootstrap';
+import { Grid } from '@mui/material';
 // generate data array 
 
 const Expenditure = () => {
@@ -66,23 +66,31 @@ const Expenditure = () => {
     }
     // fetch data based on year
     return (
-        <div className="container">
-            <section className='overview-container'>
-                <form onSubmit={handleYearInput}>
+        <div>
+            <Grid className="container flex"
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+        >
+            <Grid item xs className='expenditure-container'>
+            <h1>Expenditure Records</h1>
+            <form>
+                <label for='month-filter'>Filter by month: </label>
+                <input type="month" id='month-filter' name='month-filter' onChange={handleInput} />
+            </form>
+            <ExpenditureListContainer expenditures={filterRecords} handleInput={handleInput} />
+            </Grid>
+            <Grid marginTop='70px' className='border rounded'>
+            <form onSubmit={handleYearInput}>
                     <label for="year-filter">Filter by year for expenditure graph: </label>
                     <input type="number" id="year-filter" min="2000" max={lastestYear}/>
                     <button>Submit</button>
-                </form>
-                <ExpenditureOverviewContainer yearRecords={yearRecords} year={year}/>          
-            </section>
-            <section className="records">
-                <h1>Expenditure Records</h1>
-                <form>
-                    <label for="month-filter">Filter by month: </label>
-                    <input type="month" id="month-filter" max={lastestMonth} onInput={handleInput}/>
-                </form>
-                {filterRecords.map(record => <ExpenditureRecord record={record} key={record._id} />)}                
-            </section>
+            </form>
+            <ExpenditureOverviewContainer yearRecords={yearRecords} year={year}/>
+            </Grid>
+        </Grid>
+
         </div>
     )
 }

@@ -22,6 +22,7 @@ const PopupComponent = ({carpark, isOpen, closeHander, innerToggler, predicted, 
 
 
     useEffect(()=> {
+        if(!user) return;
         if(user.length !== 0) {
             const fav = user.savedList.includes(carpark.CarParkID);
             setIsfav(fav);

@@ -3,7 +3,7 @@ import {Outlet,Link} from 'react-router-dom'
 import './navigation.style.scss'
 import { DropdownMenu, NavIcon, UserIcon, FavDropdown } from "../../components"
 import { UserContext } from "../../contexts"
-import {Box, AppBar, Toolbar, Typography, Button, IconButton, MenuItem, Menu} from '@mui/material'
+import {Box, AppBar, Toolbar, Typography,} from '@mui/material'
 
 const Navigation = () => {
     const {user,isIconOpen, isFavIconOpen, isAuthenticated}  = useContext(UserContext)

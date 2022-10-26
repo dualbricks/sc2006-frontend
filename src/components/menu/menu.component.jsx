@@ -1,6 +1,5 @@
-import userEvent from "@testing-library/user-event";
+
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
 import { UserContext } from "../../contexts";
 import { LogOutUser } from "../../utils/db";
 import { Button } from "@mui/material";
@@ -32,11 +31,8 @@ const Menu = ({toggler}) => {
 
   //
   return (
-    <div className="container">
+    <div >
       <div className="align-center">
-        <div className="row">
-
-        </div>
         <div className="row">
           <Button className="menu-button" href="/settings" variant="contained" size="large">Account</Button>
         </div>
@@ -56,7 +52,6 @@ const Menu = ({toggler}) => {
         </div>
 
       </div>
-    
       <p>{errorMessage}</p>
     </div>
   );

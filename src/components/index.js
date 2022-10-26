@@ -22,6 +22,7 @@ import NavIcon from './nav-icon/nav-icon.component'
 import FavDropdown from './fav-dropdown/fav-dropdown.component'
 import AvailabilityIcon from './availiability-icon/availability-icon.component'
 import CarparkCard from './carpark-card/carpark-card.component'
+import ExpenditureListContainer from './expenditure-list-container/expenditure-list-container'
 export {
     SearchBar, 
     CarParkItem,
@@ -46,6 +47,7 @@ export {
     NavIcon,
     FavDropdown,
     AvailabilityIcon,
-    CarparkCard
+    CarparkCard,
+    ExpenditureListContainer
 }
 

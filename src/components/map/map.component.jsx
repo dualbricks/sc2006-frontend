@@ -2,7 +2,7 @@ import {Buffer} from 'buffer';
 const Map = ({carpark, width, height}) => {
     const { Development,Location} = carpark;
     const coords = Location.coordinates
-    const str = `<p>${Development}</p><a href="https://google.com/maps?q=${coords[1]},${coords[0]}" target="_blank" rel="noreferrer noopener">Click here to open in google maps</a>`
+    const str = `<p>${Development}</p><a href="https://google.com/maps?q=${coords[1]},${coords[0]}" target="_top" rel="noreferrer noopener">Click here to open in google maps</a>`
     console.log(str)
     const bs64 = Buffer.from(str,'utf8')
     console.log(bs64)

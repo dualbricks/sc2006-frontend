@@ -9,7 +9,7 @@ const Map = ({carpark, width, height}) => {
     const bs64String = bs64.toString('base64');
     let srcString = `https://www.onemap.gov.sg/minimap/mm.html?mapStyle=Night&zoomLevel=17&latLng=${coords[1]},${coords[0]}&ewt=${bs64String}&popupWidth=200&showPopup=True`
     return(
-        <iframe title={Development} src={srcString} height={height} width={width} scrolling="no" frameborder="1" allowfullscreen="allowfullscreen" sandbox='allow-scripts'></iframe>
+        <iframe title={Development} src={srcString} height={height} width={width} scrolling="no" frameborder="1" allowfullscreen="allowfullscreen" sandbox='allow-scripts allow-same-origin'></iframe>
     )
 }
 

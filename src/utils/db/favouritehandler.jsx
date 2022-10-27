@@ -4,7 +4,7 @@ export const favouriteHandler = async (token, options, state) => {
     axios.defaults.headers.post['Authorization'] = `Bearer ${token}`;
     if(!state) {
         try {
-            const data = await fetchHelper('/users/me/save', options);
+            const data = await fetchHelper(`https://api.dualbricks.tech/users/me/save`, options);
             return data
         }catch(e) {
             console.log(e)
@@ -13,7 +13,7 @@ export const favouriteHandler = async (token, options, state) => {
     }
     else {
         try {
-            const data = await fetchHelper('/users/me/remove', options);
+            const data = await fetchHelper(`https://api.dualbricks.tech/users/me/remove`, options);
             return data
         }catch(e) {
             console.log(e)

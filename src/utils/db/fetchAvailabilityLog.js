@@ -3,7 +3,7 @@ import axios from 'axios'
 export const fetchAvailabilityByOptions = async (options)=>{
     try {
         console.log(options);
-        const data = await fetchHelper('log', options);
+        const data = await fetchHelper(`https://api.dualbricks.tech/log`, options);
         return data
 
     }catch(e) {

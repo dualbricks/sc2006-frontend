@@ -7,7 +7,7 @@ export const SignUpUserWithEmailAndPassword = async (email, password)=>{
             email: email,
             password: password
         }
-        const {data,status} = await fetchHelper('users',options)
+        const {data,status} = await fetchHelper(`https://api.dualbricks.tech/users`,options)
         if(status === 400) throw new Error("Invalid Sign up");
         return data
     }catch(e) {

@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const fetchTrafficImage = async (options)=>{
     try {
-        const data = await fetchHelper('/trafficimages', options);
+        const data = await fetchHelper(`https://api.dualbricks.tech/trafficimages`, options);
         return data
 
     }catch(e) {
@@ -14,7 +14,7 @@ export const fetchTrafficImage = async (options)=>{
 
 export const fetchTrafficImageByLocation = async (location) => {
     console.log(location);
-    const url = `/trafficimages/${location.latitude}-${location.longitude}`;
+    const url = `https://api.dualbricks.tech/trafficimages/${location.latitude}-${location.longitude}`;
     try {
         const data = await fetchHelper(url);
         return data;
@@ -25,7 +25,7 @@ export const fetchTrafficImageByLocation = async (location) => {
 
 export const fetchTrafficImageByPostalCode = async (postalCode)=>{
     try {
-        const data = await fetchHelper(`trafficimages/p/${postalCode}`);
+        const data = await fetchHelper(`https://api.dualbricks.tech/trafficimages/p/${postalCode}`);
         return data;
     }catch(e) {
         throw new Error(e.data);

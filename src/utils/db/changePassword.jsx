@@ -3,7 +3,7 @@ import axios from 'axios'
 export const UpdatePassword = async (options, token)=>{
     axios.defaults.headers.patch['Authorization'] = `Bearer ${token}`;
     try {
-        const data = await fetchHelper('/users/me/password', options);
+        const data = await fetchHelper(`https://api.dualbricks.tech/users/me/password`, options);
         return data
 
     }catch(e) {

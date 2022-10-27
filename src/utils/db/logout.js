@@ -4,7 +4,7 @@ import { UserContext } from '../../contexts';
 export const LogOutUser = async (token) => {
     axios.defaults.headers.post['Authorization'] = `Bearer ${token}`;
     try {
-        const {data,status} = await fetchHelper('users/logout')
+        const {data,status} = await fetchHelper(`https://api.dualbricks.tech/users/logout`)
         if(status === 400) throw new Error("Invalid Logout");
         return data;
     }catch(e) {

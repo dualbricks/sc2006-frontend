@@ -31,7 +31,8 @@ const CarParkItem = ({carpark}) => {
             const options = {
                 minute,
                 hour,
-                id:CarParkID
+                id:CarParkID,
+                day
             }
             try {
                 const data = await fetchAvailabilityByOptions(options);

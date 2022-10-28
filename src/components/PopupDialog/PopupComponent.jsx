@@ -88,13 +88,13 @@ const PopupComponent = ({carpark, isOpen, closeHander, innerToggler, predicted, 
                     <Map carpark={carpark} width="500" height="500" />
                 </div>
                 <Container>
-                <h2>Area: {Area}</h2>
-                <h2>Development: {Development}</h2>
-                <h3>Available Normal Lots: {normal}</h3>
-                <h3>Available Heavy Vehicle Lots: {heavy}</h3>
-                <h3>Available Motorcycle Lots: {motorcycle}</h3>
-                <h2>Agency: {Agency}</h2>
-                <h3 className="prediction">Predicted Lots for next 30mins: {predicted.Y},{predicted.H},{predicted.C} </h3>
+                <p>Area: {Area}</p>
+                <p>Development: {Development}</p>
+                <p>Available Normal Lots: {normal}</p>
+                <p>Available Heavy Vehicle Lots: {heavy}</p>
+                <p>Available Motorcycle Lots: {motorcycle}</p>
+                <p>Agency: {Agency}</p>
+                <p className="prediction">Predicted Lots for next 30mins: Normal: {predicted.C}, Motorcycle: {predicted.Y}, Heavy: {predicted.H}</p>
 
                 </Container>
                 <div>

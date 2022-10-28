@@ -1,7 +1,7 @@
 export const timeConverterForPrediction = (d=new Date()) => {
     let minute = d.getMinutes();
     let hour = d.getHours();
-    let day = d.getDate();
+    let day = d.getDay();
     if(minute >= 30) {
         minute = 0;
         hour = (hour + 1) % 24;

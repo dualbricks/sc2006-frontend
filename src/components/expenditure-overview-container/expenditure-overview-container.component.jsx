@@ -8,8 +8,7 @@ const ExpenditureOverviewContainer = ({yearRecords, year}) => {
 
 
     yearRecords.forEach((record) => {
-        const month = parseInt(record.startTime.split('-')[1]);
-        console.log(month);
+        const month = parseInt(record.startTime.split('-')[1])-1;
         monthlyCost[month] = monthlyCost[month] ? monthlyCost[month] + record.cost : record.cost;
         totalCost += record.cost; 
     })

@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../contexts";
 import { LogOutUser } from "../../utils/db";
 import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import "./menu.style.scss";
 
 const Menu = ({toggler}) => {
@@ -11,7 +12,7 @@ const Menu = ({toggler}) => {
   const { token } = useContext(UserContext);
   const [errorMessage, setErrorMessage] = useState('');
 
-
+  const navigate = useNavigate();
   const onLogout = async (e) => {
     e.preventDefault();
     setErrorMessage("");
@@ -21,11 +22,13 @@ const Menu = ({toggler}) => {
       setUser([]);
       setToken("");
       setIsAuthenticated(false);
+      navigate("/");
     } catch (err) {
       setUser([]);
       setToken("");
       setIsAuthenticated(false);
       setErrorMessage("You are already logged out from other device");
+      navigate("/");
     }
   };
 

@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from 'react-router-dom';
 import { CarParkProvider } from './contexts/carPark.context';
-import { UserProvider } from './contexts';
+import { UserProvider, FeesProvider } from './contexts';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -13,7 +13,9 @@ root.render(
     <BrowserRouter>
       <UserProvider>
         <CarParkProvider>
+          <FeesProvider>
           <App/>
+          </FeesProvider>
         </CarParkProvider>
       </UserProvider>
     </BrowserRouter>

@@ -1,0 +1,310 @@
+[
+   {
+     "CarParkID": 1,
+     "weekdays_rate_1": "7am-5pm: $2.20 for 1st hr; $1.10 for sub. ½ hr (excluding PH)",
+     "weekdays_rate_2": "5pm-12am:$2.20 per entry; Aft 12am:$1.10 per hr",
+     "saturday_rate": "$1.10 per hr",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 2,
+     "weekdays_rate_1": "Mon-Thu: 7am-5pm: $2.20 for 1st 2hrs; $1.10 per ½ hr for sub. ½ hr",
+     "weekdays_rate_2": "Mon-Thu: 5pm-2am: $2.20 per entry; 2am-7am: $1.10 per ½ hr",
+     "saturday_rate": "Fri/Sat-Sun/PH: 7am-2am :$2.40 for 1st 2 hrs; $1.20 per hr for sub. 2hrs; $1.40 per ½ hr for sub. ½ hr after 4 hrs of parking. 2am-7am: $1.10 per ½ hr",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 3,
+     "weekdays_rate_1": "8am-5.59pm: $2.20 for 1st hr; $0.55 for sub. 15mins",
+     "weekdays_rate_2": "6pm-7.59am: $3 per entry",
+     "saturday_rate": "$2.20 for 1st 2hrs, $0.40 for sub. 15mins for 3rd and 4th hr, $0.60 for sub. 15mins for 5th hr onwards.",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 4,
+     "weekdays_rate_1": "6am-6pm: $2 per hr ($1.50 per ½ hr at Waterfront car park daily) 12pm-2pm $2 per entry",
+     "weekdays_rate_2": "6pm-10pm: $6 per entry; Aft 10pm: $2 per entry",
+     "saturday_rate": "6am-6pm: $2 per hr ($1.50 per ½ hr at Waterfront car park daily)",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 5,
+     "weekdays_rate_1": "7am-6pm: $3.30 for 1st hr; $1.10 for sub.½ hr",
+     "weekdays_rate_2": "Aft 6pm: $2.20 per entry",
+     "saturday_rate": "$2.20 for 1st 2hrs; $1.10 for sub. hr",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 6,
+     "weekdays_rate_1": "6am-6pm: $2 per hr or part thereof. Free Lunchtime Parking from 12pm to 2pm (only valid for vehicles entering the multi-storey carpark after 12pm).",
+     "weekdays_rate_2": "6pm-6am:$2 per entry.",
+     "saturday_rate": "6am-12midnight: $2 per hr or part thereof. 12midnight- 6am: $2 per entry.",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 7,
+     "weekdays_rate_1": "7am-10.59pm:$2 for 1st hr or part thereof; $1.50 per sub. ½ hr or part thereof.",
+     "weekdays_rate_2": "11pm-6.59am: $2 per ½ hr or part thereof.",
+     "saturday_rate": "Same as wkdays",
+     "sunday_publicholiday_rate": "Same as wkdays"
+   },
+   {
+     "CarParkID": 8,
+     "weekdays_rate_1": "8am-11pm: $1.50 per ½ hr",
+     "weekdays_rate_2": "8am-11pm: $1.50 per ½ hr",
+     "saturday_rate": "8am-11pm: $5 for 1st 3 hrs and $1.50 for subseqent ½ hr",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 9,
+     "weekdays_rate_1": "Mon-Thu:$1.07 for 1st hr; $0.32 for sub. 15mins.  Fri & Eve of PH: $2.14 for 1st 2 hr; $0.32 for sub. 15mins.",
+     "weekdays_rate_2": "Mon-Thu: 6pm-11.59pm: $2.14 per entry; Fri & Eve of PH: 6pm-2.59am: $2.14 per entry",
+     "saturday_rate": "3am-5.59pm: $2.14 for 1st 2hrs; $0.32 for sub. 15mins; Aft 6pm: $2.14 per entry",
+     "sunday_publicholiday_rate": "3am-5.59pm: $2.14 for 1st 2hrs; $0.32 for sub. 15mins. 6pm-11.59pm: $2.14 per entry"
+   },
+   {
+     "CarParkID": 10,
+     "weekdays_rate_1": "8am-9:59am: $1.40 for ½ hr; 10am-9:59pm: $1.40 per hr",
+     "weekdays_rate_2": "Aft 10pm: $3 per entry",
+     "saturday_rate": "8am-9:59pm: $1.40 per hr; Aft 10pm: $3 per entry",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 11,
+     "weekdays_rate_1": "From 7am: $2.40 for 1st hr; $1.40 for sub. ½ hr",
+     "weekdays_rate_2": "Aft 6pm: $4.50 for 1st 3hrs; $1.60 for sub.½ hr",
+     "saturday_rate": "From 7am: $4.50 for 1st 3hrs; $1.60 for sub. ½ hr",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 12,
+     "weekdays_rate_1": "Mon-Thu: 7am-5pm: $2.20 for 1st 2hrs; $1.10 per ½ hr for sub. ½ hr (Car Park at Marina Square)",
+     "weekdays_rate_2": "Mon-Thu: 5pm-2am: $2.20 per entry; 2am-7am: $1.10 per ½ hr",
+     "saturday_rate": "Fri/Sat-Sun/PH: 7am-2am :$2.40 for 1st 2 hrs; $1.20 per hr for sub. 2hrs; $1.40 per ½ hr for sub. ½ hr after 4 hrs of parking. 2am-7am: $1.10 per ½ hr",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 13,
+     "weekdays_rate_1": "12.01am-12pm, 2.01pm-5pm: $1.28 for ½ hr , 12.01pm-2pm: $1.82 for ½ hr",
+     "weekdays_rate_2": "5.01pm-7pm:$1.82 for ½ hr; Aft 7pm: $4.28 per entry",
+     "saturday_rate": "12.01am-12pm, 2.01pm-5pm: $2.57 for 1st hr; $1.61 for sub. ½ hr, 12.01pm-2pm, 5.01pm-7pm: $3.64 for 1st hr; $2.14 for sub. ½ hr, Aft 7pm: $4.28 per entry",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 14,
+     "weekdays_rate_1": "7am-5pm: $2.40 for 1st hr; $1.20 for sub. ½ hr (Lunch Hr Surcharge of additional $1.07 between 12pm - 2pm)",
+     "weekdays_rate_2": "Aft 5pm: $3.50 per entry",
+     "saturday_rate": "$3.60 for 1st 2hrs; $0.80 for sub. ½ hr",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 15,
+     "weekdays_rate_1": "8am-6pm: $3 for 1st hr; $1.50 for sub. ½ hr",
+     "weekdays_rate_2": "Aft 6pm: $4.50 per entry",
+     "saturday_rate": "Same as wkdays",
+     "sunday_publicholiday_rate": "Same as wkdays"
+   },
+   {
+     "CarParkID": 16,
+     "weekdays_rate_1": "7am-6pm: $1.40 for 1st hr; $0.70 for sub. 30min",
+     "weekdays_rate_2": "6.01pm-4am: $3 per entry; Aft 4am: $2.50 per hr",
+     "saturday_rate": "7am-6pm: $1.60 for 1st hr; $0.80 for sub. ½ hr; 6.01pm-4am: $3.50 per entry; Aft 4am: $2.50 per hr",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 17,
+     "weekdays_rate_1": "7am-5pm: Island Entry: $6 per car*; Parking - $3 for 1st 8hrs; $1 for sub. hr. Except 12pm-2pm: Island Entry $2 per car*, free parking. *Rates covers all passengers in car",
+     "weekdays_rate_2": "5.01pm-6.59am: Island entry: $2 per car*; parking - $1 per entry",
+     "saturday_rate": "7am-5pm: Island entry: $7 per car*; Parking - $3 for 1st 8hrs; $1 for sub. hr; 5.01pm-6.59am: $3 per car*; parking - $1 per entry",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 18,
+     "weekdays_rate_1": "6am-6pm: $3 for 1st hr, $0.05/min",
+     "weekdays_rate_2": "6pm-6am the following day: $6 Per entry",
+     "saturday_rate": "Same as wkdays",
+     "sunday_publicholiday_rate": "Same as wkdays"
+   },
+   {
+     "CarParkID": 19,
+     "weekdays_rate_1": "7am-6pm: $1.20 for 1st hr; $0.60 for sub. ½ hr",
+     "weekdays_rate_2": "6pm-1am: $2.40 per entry; Aft 1am: $2.04 per hr",
+     "saturday_rate": "Same as wkdays",
+     "sunday_publicholiday_rate": "Same as wkdays"
+   },
+   {
+     "CarParkID": 20,
+     "weekdays_rate_1": "8am-5pm: $2.14 for 1st hr; $1.07 for sub. ½ hr.",
+     "weekdays_rate_2": "Aft 5pm: $3.53 per entry.",
+     "saturday_rate": "Same as wkdays",
+     "sunday_publicholiday_rate": "$3.53 per entry."
+   },
+   {
+     "CarParkID": 21,
+     "weekdays_rate_1": "7am-5pm: $2 for 1st hr; $1.50 sub. ½ hr",
+     "weekdays_rate_2": "Aft 5pm: $2 for 1st hr; $1.50 sub. hr",
+     "saturday_rate": "Same as wkdays",
+     "sunday_publicholiday_rate": "$2 for 1st hr; $1.50 for sub. hr"
+   },
+   {
+     "CarParkID": 22,
+     "weekdays_rate_1": "7am-6pm: $2.14 for 1st hr; $1.39 for sub. ½ hr",
+     "weekdays_rate_2": "Aft 6pm: $3.75 per entry",
+     "saturday_rate": "Same as wkdays",
+     "sunday_publicholiday_rate": "$3.75 per entry"
+   },
+   {
+     "CarParkID": 23,
+     "weekdays_rate_1": "Mon-Thu: 8am-4.59pm: $2.67 for 1st hr; $0.64 for sub. 15 mins",
+     "weekdays_rate_2": "Mon-Thu: 5pm-11.59pm: $3 per entry. 12am-7.59am $1.07 per hr",
+     "saturday_rate": "Fri/Sat-Sun/PH: 8am-4.59pm: $2.56 for 1st hr; $0.94 for sub. 15 mins. 5-11.59pm: $3.74 per entry. 12am-7.59am $1.07 per hour",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 24,
+     "weekdays_rate_1": "$2 for 1st hr; $1 for sub. ½ hr",
+     "weekdays_rate_2": "Aft 6pm: $4.50 for 1st 3hrs; $1.50 for sub. ½ hr",
+     "saturday_rate": "Same as weekdays",
+     "sunday_publicholiday_rate": "$4.50 for 1st 3hrs; $1.50 for sub ½ hr"
+   },
+   {
+     "CarParkID": 26,
+     "weekdays_rate_1": "Mon-Thu: 7am-7pm: $7 for 1st hr; $1 for sub. ½ hr or part thereof. (Max: $28 per 24 hrs)",
+     "weekdays_rate_2": "Aft 7pm: $6 per entry",
+     "saturday_rate": "Fri/Sat-Sun/PH: 7am-7pm: $8 for 1st hr; $2 for sub. ½ hr or part thereof.  Aft 7pm: $8 per entry (Max: $28 per 24 hrs)",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 27,
+     "weekdays_rate_1": "2am-6pm: $2 for 1st hr; $1 for sub. ½ hr",
+     "weekdays_rate_2": "6pm-2am: $4.50 for 1st 3hrs; $1.50 for sub. ½ hr",
+     "saturday_rate": "Same as wkdays",
+     "sunday_publicholiday_rate": "2am-2am: $4.50 for 1st 3hrs; $1.50 for sub. ½ hr"
+   },
+   {
+     "CarParkID": 29,
+     "weekdays_rate_1": "7am-7pm: $7 for 1st hr; $1 for sub.½ hr; (Capped at $26 every 24hrs)",
+     "weekdays_rate_2": "Aft 7pm: $7 per entry",
+     "saturday_rate": "Sat, Sun & Eve of PH: 7am-7pm: $8 for 1st hr; $1 for sub. ½ hr; Aft 7pm: $8 per entry",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 43,
+     "weekdays_rate_1": "Daily: $1.30 for 1st hr; $0.50 for sub. 15 mins",
+     "weekdays_rate_2": "6pm - 11.59pm: $2.50 per entry",
+     "saturday_rate": "Same as wkdays",
+     "sunday_publicholiday_rate": "Same as wkdays"
+   },
+   {
+     "CarParkID": 50,
+     "weekdays_rate_1": "7am-6pm: $1.40 for 1st hr; $0.70 for sub. 30min",
+     "weekdays_rate_2": "6.01pm-4am: $3 per entry; Aft 4am: $2.50 per hr",
+     "saturday_rate": "7am-6pm: $1.60 for 1st hr; $0.80 for sub. ½ hr; 6.01pm-4am: $3.50 per entry; Aft 4am: $2.50 per hr",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 52,
+     "weekdays_rate_1": "12am-5.59pm: $3 for 1st 1½ hrs or part thereof; $1.50 for sub. ½ hr or part thereof.",
+     "weekdays_rate_2": "6pm-11.59pm: $4.80 1st 2½ hrs or part thereof; $1.80 for sub. ½ hr or part thereof.",
+     "saturday_rate": "$4.80 1st 2½ hrs or part thereof; $1.80 for sub. ½ hr or part thereof.",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 53,
+     "weekdays_rate_1": "Free for 1st 2hrs for first entry only. Chargeable after 2nd hr of 1st entry @ $1.07 /hr; $0.30 for sub. 15 mins.",
+     "weekdays_rate_2": "-",
+     "saturday_rate": "-",
+     "sunday_publicholiday_rate": "-"
+   },
+   {
+     "CarParkID": 54,
+     "weekdays_rate_1": "3.30am-5.59pm: $1.30 for 1st hr; sub 15 mins or part thereof: $0.30. *Free 2 Hour Parking from 12 - 2pm daily (Monday - Friday) from now to 15 Oct 2015.",
+     "weekdays_rate_2": "6pm-3.29am: $2.50 per entry",
+     "saturday_rate": "Same as wkdays",
+     "sunday_publicholiday_rate": "Same as wkdays"
+   },
+   {
+     "CarParkID": 55,
+     "weekdays_rate_1": "3am-5.59pm: $2.58 for 1st hr; $1.48 for sub. ½ hr. Daily $2 surcharge from 9am-9pm.  Additional Peak Hr Surcharge of $1.28 from 12pm to 2:30pm daily.",
+     "weekdays_rate_2": "Aft 6pm: $3.48 per entry. Daily $2 surcharge from 9am-9pm.",
+     "saturday_rate": "Same as wkdays",
+     "sunday_publicholiday_rate": "3am-5.59pm: $3.48 for 1st 2hrs; $0.05 for sub. mins. Aft 6pm: $3.48 per entry. Daily $2 surcharge from 9am-9pm.  Additional Peak Hr Surcharge of $1.28 from 12pm to 2:30pm daily."
+   },
+   {
+     "CarParkID": 56,
+     "weekdays_rate_1": "$1.30/30min from 7am to 6pm",
+     "weekdays_rate_2": "$3.20/entry from 6pm to 1am the following day",
+     "saturday_rate": "Same as wkdays",
+     "sunday_publicholiday_rate": "Same as wkdays"
+   },
+   {
+     "CarParkID": 57,
+     "weekdays_rate_1": "Mon-Thurs: 12am-5.59pm: $1.07 for 1st hr; $0.32 for sub. 15mins; Fri & Eve of PH: $1.07 for 1st hr; $0.32 for sub. 15mins",
+     "weekdays_rate_2": "Mon-Thurs: 6pm-11.59pm: $2.14 per entry; Fri & Eve of PH: 6pm-2.59am (the next day): $2.14 per entry",
+     "saturday_rate": "3am-5.59pm: $2.14 for 1st 2 hrs; $0.32 for sub. 15mins; Aft 6pm: $2.14 per entry",
+     "sunday_publicholiday_rate": "3am-5.59pm: $2.14 for 1st 2hrs; $0.32 for sub. 15mins.  6pm-11.59pm: $2.14 per entry"
+   },
+   {
+     "CarParkID": 58,
+     "weekdays_rate_1": "12am to 6pm :$1.07 for 1st hr, $0.32/min for sub.min.",
+     "weekdays_rate_2": "6pm-12am: $2.14 per entry",
+     "saturday_rate": "12am to 6pm :$2.14 for 1st 2 hr, $0.32 for sub 15mins",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 59,
+     "weekdays_rate_1": "7am-11.59am; 3pm-4.59pm: $2.14 for 1st 2hrs; $1.07 for sub. hr (Free parking between 12pm-2.59pm)",
+     "weekdays_rate_2": "Aft 5pm: $2.14 for 1st hr; $1.07 for sub. hr (Cap at $5.35)",
+     "saturday_rate": "7am-4.59pm: $2.14 for 1st 2hrs; $1.07 for sub. hr; Aft 5pm: $2.14 for 1st hr; $1.07 for sub. hr (Cap at $5.35)",
+     "sunday_publicholiday_rate": "$2.68 per entry"
+   },
+   {
+     "CarParkID": 60,
+     "weekdays_rate_1": "12am-11.59pm:$1.30 for 1st hr, $0.65 for sub. 30 mins or part thereof.",
+     "weekdays_rate_2": "$1.30 for 1st hr, $0.65 for sub. 30 mins or part thereof.",
+     "saturday_rate": "Sat & PH: Same as wkdays",
+     "sunday_publicholiday_rate": "Sun:12am-11.59pm: $2.14 for 1st hr, $1.07 for sub. 30 mins or part thereof."
+   },
+   {
+     "CarParkID": 61,
+     "weekdays_rate_1": "8am-5.59pm: $2.20 for 1st hr; $0.55 for sub. 15 mins.",
+     "weekdays_rate_2": "Mon-Thu: 6pm-7.59am: $3.30 per entry; Fri: $3.30 for 1st 2hrs; $0.55 for sub. 15 mins.",
+     "saturday_rate": "$3.30 for 1st 2hrs; $0.35 for sub. 10 mins or part thereof",
+     "sunday_publicholiday_rate": "Same as Saturday"
+   },
+   {
+     "CarParkID": 62,
+     "weekdays_rate_1": "12am-5.59pm: $1.07 for 1st hr; $0.32 for sub. 15 mins.",
+     "weekdays_rate_2": "Mon-Thurs, 6pm-11.59pm: $2.14 per entry. Fri & Eve of PH, 6pm-2.59am: $2.14 per entry.",
+     "saturday_rate": "3am-5.59pm: $2.14 for 1st 2-hrs; $0.32 for sub. 15 mins. 6pm-2.59am: $2.14 per entry.",
+     "sunday_publicholiday_rate": "3am-5.59pm: $2.14 for 1st 2-hrs; $0.32 for sub. 15 mins. 6pm-11.59am: $2.14 per entry."
+   },
+   {
+     "CarParkID": 63,
+     "weekdays_rate_1": "12am-5:59pm: $1.07 for 1st hr; $0.32 for sub. 15mins",
+     "weekdays_rate_2": "Mon-Thu: 6pm-11.59pm: $2.14 per entry; Fri & Eve of PH: 6pm-2.59am: $2.14 per entry",
+     "saturday_rate": "3am-5.59pm: $2.14 for 1st 2hrs; $0.32 for sub. 15mins; 6pm-2.59am: $2.14 per entry",
+     "sunday_publicholiday_rate": "3am-5.59pm: $2.14 for 1st 2hrs; $0.32 for sub. 15mins; 6pm-11.59am: $2.14 per entry"
+   },
+   {
+     "CarParkID": 64,
+     "weekdays_rate_1": "12am-5.59pm - $1.07 for 1st hr; $0.32 for sub. 15 mins",
+     "weekdays_rate_2": "Mon-Thu: 6pm-11.59pm: $2.14 per entry; Fri/Eve of PH: 6pm-2.59am: $2.14 per entry",
+     "saturday_rate": "3am-5.59pm: $2.14 for 1st 2hrs; $0.32 for sub. 15 mins; 6pm-2.59am: $2.14 per entry",
+     "sunday_publicholiday_rate": "3am-5.59pm: $2.14 for 1st 2hrs; $0.32 for sub. 15 mins; 6pm-11.59pm: $2.14 per entry"
+   },
+   {
+     "CarParkID": 65,
+     "weekdays_rate_1": "Daily: 12-11.59pm: $1.50 for 1st hr, $0.40 for sub. 15 mins",
+     "weekdays_rate_2": "-",
+     "saturday_rate": "-",
+     "sunday_publicholiday_rate": "-"
+   },
+   {
+     "CarParkID": 66,
+     "weekdays_rate_1": "12am-5.59pm: $2.14 for 1st hr; $0.54 for sub. 15mins",
+     "weekdays_rate_2": "6pm-9.59pm: $2.14 per entry",
+     "saturday_rate": "Same as wkdays",
+     "sunday_publicholiday_rate": "Same as wkdays"
+   }
+  ]

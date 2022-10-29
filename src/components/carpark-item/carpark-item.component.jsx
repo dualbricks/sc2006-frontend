@@ -4,7 +4,7 @@ import { fetchAvailabilityByOptions } from '../../utils/db/fetchAvailabilityLog'
 import PopupComponent from '../PopupDialog/PopupComponent';
 import './carpark-item.style.scss';
 import { timeConverterForPrediction } from '../../utils/timeConverter';
-import { CostCalculator, CarparkCard} from "../index"
+import { CostCalculator, CarparkCard, ParkingFeeCost} from "../index"
 
 
 const CarParkItem = ({carpark}) => {
@@ -15,6 +15,7 @@ const CarParkItem = ({carpark}) => {
     const [motorcycle, setMotorcycle] = useState(0);
     const { AvailableLots, Development, _id, CarParkID} = carpark;
     const [isOpenInner, setIsOpenInner] = useState(false);
+    const [isInfoOpen, setIsInfoOpen] = useState(false);
     // first render 
     useEffect(()=>{
         try{
@@ -51,6 +52,10 @@ const CarParkItem = ({carpark}) => {
     const innerToggler = () => {
         setIsOpenInner(!isOpenInner);
     }
+    // set infoToggler 
+    const infoToggler = () => {
+        setIsInfoOpen(!isInfoOpen);
+    }
 
     if(carpark.error) return (
         <div className="carpark-container" key={carpark._id}>
@@ -80,8 +85,9 @@ const CarParkItem = ({carpark}) => {
     return (
         <div className="" key={_id}>
             <CarparkCard Development={Development} normal={normal} heavy={heavy} motorcyle={motorcycle} onClick={togglePopup}/>
-            {isOpen&& <PopupComponent className = "desc" carpark={carpark} isOpen={isOpen} innerToggler={innerToggler} closeHander ={togglePopup} predicted={predicted} normal={normal} heavy={heavy} motorcycle={motorcycle} />}
+            {isOpen&& <PopupComponent className = "desc" carpark={carpark} isOpen={isOpen} innerToggler={innerToggler} closeHander ={togglePopup} infoToggler={infoToggler} predicted={predicted} normal={normal} heavy={heavy} motorcycle={motorcycle} />}
             {isOpenInner && <CostCalculator isOpen={isOpenInner} closeHandler={innerToggler} carParkID={CarParkID}/>}
+            {isInfoOpen && <ParkingFeeCost isOpen={isInfoOpen} closeHandler={infoToggler} carParkID={CarParkID}/>}
         </div>    
     )
 }

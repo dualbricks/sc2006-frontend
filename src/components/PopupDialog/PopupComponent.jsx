@@ -7,20 +7,22 @@ import CloseIcon from '@mui/icons-material/Close';
 import FavoriteIcon from '@mui/icons-material/Favorite'; 
 import { useState, useEffect } from 'react';
 import { useContext } from 'react';
-import { UserContext } from '../../contexts';
+import { UserContext, FeesContext } from '../../contexts';
 import { favouriteHandler } from '../../utils/db/favouritehandler';
 import {red} from '@mui/material/colors';
 import CalculateIcon from '@mui/icons-material/Calculate';
+import InfoIcon from '@mui/icons-material/Info';
+import blue from '@mui/material/colors/blue';
 
-const PopupComponent = ({carpark, isOpen, closeHander, innerToggler, predicted, normal, heavy, motorcycle}) => {
+const PopupComponent = ({carpark, isOpen, closeHander, infoToggler, innerToggler, predicted, normal, heavy, motorcycle}) => {
     const {Area, Development, Agency, } = carpark;
     const {user, token, setUser, isAuthenticated} = useContext(UserContext)
-
+    const {feesList} = useContext(FeesContext);
     const [isfav, setIsfav] = React.useState(false);
     const [disabled, setDisabled] = useState(false);
     const [isDesktop, setIsDesktop] = useState(window.innerWidth > 650);
-
-
+    const [isFeesAvailable, setIsFeesAvailable] = useState(false);
+    
     useEffect(()=> {
         if(!user) return;
         if(user.length !== 0) {
@@ -28,6 +30,13 @@ const PopupComponent = ({carpark, isOpen, closeHander, innerToggler, predicted, 
             setIsfav(fav);
         }
     },[])
+    // check if the carpark has fees
+    useEffect(() => {
+        const fees = feesList.filter((fee)=> fee.CarParkID.toString() === carpark.CarParkID);
+        if(fees.length !== 0) {
+            setIsFeesAvailable(true);
+        }
+    }, [feesList])
 
     const toggler = () => {
         innerToggler();
@@ -36,8 +45,6 @@ const PopupComponent = ({carpark, isOpen, closeHander, innerToggler, predicted, 
     const updateMedia = () => { 
         setIsDesktop(window.innerWidth > 600);
     }
-
-
 
     useEffect(() => {
         window.addEventListener("resize", updateMedia);
@@ -124,9 +131,20 @@ const PopupComponent = ({carpark, isOpen, closeHander, innerToggler, predicted, 
                     >
                     <CalculateIcon/>
                     </IconButton>
-                    }
-                
-                
+                }
+                {isFeesAvailable && <IconButton
+                        sx={{
+                            position: 'absolute',
+                            right: 90,
+                            bottom: 8,
+                            color: (theme) => blue[500],
+                        }}
+                        size="large"
+                    onClick={infoToggler}
+                    >
+                    <InfoIcon/>
+                    </IconButton>
+                }
                 </div>
             </Paper>): (<Paper className='paper-popup'>
                 <IconButton
@@ -181,6 +199,19 @@ const PopupComponent = ({carpark, isOpen, closeHander, innerToggler, predicted, 
                     onClick={toggler}
                     >
                     <CalculateIcon/>
+                    </IconButton>
+                    }
+                    {isFeesAvailable && <IconButton
+                        sx={{
+                            position: 'absolute',
+                            right: 90,
+                            bottom: 8,
+                            color: (theme) => blue[500],
+                        }}
+                        size="large"
+                    onClick={infoToggler}
+                    >
+                    <InfoIcon/>
                     </IconButton>
                     }
                 </div>

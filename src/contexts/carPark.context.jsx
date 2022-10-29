@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from "react";
-import {getFCP} from 'web-vitals';
 import { fetchAllCarParks } from "../utils/db";
 
 export const CarParkContext = createContext({

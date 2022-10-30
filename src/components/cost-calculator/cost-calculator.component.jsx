@@ -115,7 +115,7 @@ const CostCalculator = ({isOpen, closeHandler, carParkID, record}) => {
             setLoading(false);
         }
     }
-    const isCalculationAuto = carParkID === '1' || carParkID === '2' || carPark.id === '1' || carPark.id === '2' || carParkID === '3' || carPark.id === '3';
+    const isCalculationAuto = carParkID === '1' || carParkID === '2' || carPark?.id === '1' || carPark?.id === '2' || carParkID === '3' || carPark?.id === '3';
     useEffect(()=>{
         console.log(isCalculationAuto)
         if(isCalculationAuto) {
@@ -126,11 +126,10 @@ const CostCalculator = ({isOpen, closeHandler, carParkID, record}) => {
                 setCost(Number(calculatedCost.toFixed(2)));
             }
         }
-    }, [startDate, endDate, startTime, endTime, carParkID, carPark.id, isCalculationAuto])
+    }, [startDate, endDate, startTime, endTime, carParkID, carPark?.id, isCalculationAuto])
     return (
         <Dialog variant="outlined"
             open={isOpen}
-            maxWidth="sm"
             onClose={closeHandler} 
         
         >

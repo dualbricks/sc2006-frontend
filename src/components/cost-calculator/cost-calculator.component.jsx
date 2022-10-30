@@ -11,6 +11,8 @@ import { Form } from 'react-bootstrap';
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from '@mui/icons-material/Close';
 import { useEffect } from 'react';
+import { calculateById } from '../../utils/calculator';
+import { CopyAllSharp } from '@mui/icons-material';
 
 
 const CostCalculator = ({isOpen, closeHandler, carParkID, record}) => {
@@ -31,14 +33,16 @@ const CostCalculator = ({isOpen, closeHandler, carParkID, record}) => {
              carpark: carPark.Development,
              id: carPark.CarParkID
          }
-
          return option
      });
+     const key = "carpark";
+     const arrayUniqueByKey = [...new Map(nameArray.map(item =>
+        [item[key], item])).values()];
 
-     const [carPark, setCarPark] = useState(nameArray[0]);
+     const [carPark, setCarPark] = useState(arrayUniqueByKey[0]);
 
      const defaultOption = {
-         options: nameArray,
+         options: arrayUniqueByKey,
          getOptionLabel: (option) => option.carpark ? option.carpark : option,
          isOptionEqualToValue: (option, value) => {
            return option.id === value.id;} 
@@ -50,8 +54,9 @@ const CostCalculator = ({isOpen, closeHandler, carParkID, record}) => {
         setStartTime('');
         setEndTime('');
         setCost(0);
-        setCarPark(nameArray[0]);
+        setCarPark(arrayUniqueByKey[0]);
     }
+
     const onCostCalculatorSubmit = async (e) => {
         console.log("submit");
         e.preventDefault();
@@ -111,6 +116,27 @@ const CostCalculator = ({isOpen, closeHandler, carParkID, record}) => {
             setLoading(false);
         }
     }
+
+    useEffect(()=>{
+        if(carParkID === '1' || carPark.id === '1') {
+            if(startDate.length > 0 && endDate.length > 0 && startTime.length > 0 && endTime.length > 0) {
+                console.log("calculate")
+                const startDateTime = new Date(startDate + ' ' + startTime);
+                const endDateTime = new Date(endDate+' '+endTime);
+                const calculatedCost = calculateById(startDateTime, endDateTime, carParkID? carParkID: carPark.id);
+                setCost(Number(calculatedCost.toFixed(2)));
+            }
+        }
+        else if(carParkID === '2' || carPark.id === '2') {
+            if(startDate.length > 0 && endDate.length > 0 && startTime.length > 0 && endTime.length > 0) {
+                console.log("calculate")
+                const startDateTime = new Date(startDate + ' ' + startTime);
+                const endDateTime = new Date(endDate+' '+endTime);
+                const calculatedCost = calculateById(startDateTime, endDateTime, carParkID? carParkID: carPark.id);
+                setCost(Number(calculatedCost.toFixed(2)));
+            }
+        }
+    }, [startDate, endDate, startTime, endTime, carParkID, carPark.id])
     return (
         
         <Dialog variant="outlined"

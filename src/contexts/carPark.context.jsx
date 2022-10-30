@@ -36,7 +36,7 @@ export const CarParkProvider = ({children})=>{
                 await getCarParksList()
                 setUpdateTime(Date());
                 console.log("Updated")
-            }, 1000*60)
+            }, 1000*60*2)
         getCarParksList();
         return () => clearInterval(update);
     }, [])

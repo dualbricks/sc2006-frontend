@@ -4,12 +4,9 @@ import { Box } from "@mui/material"
 const ExpenditureListContainer = ( {expenditures, handleInput}) => {
 
     return (
-        <div className="expenditure-list-container">
-            <Box overflow="auto" maxHeight='500px'>
-                {expenditures.map((expenditure)=> <ExpenditureRecord record={expenditure} key={expenditure._id} />)}
-            </Box>
-            
-        </div>
+        <Box overflow="auto" maxHeight='500px' alignContent='center' >
+            {expenditures.map((expenditure)=> <ExpenditureRecord record={expenditure} key={expenditure._id} />)}
+        </Box>
     )
 
 }

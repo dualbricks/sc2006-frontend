@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import './expenditure.style.scss'
 import { UserContext } from '../../contexts';
 import { getExpenditures, getExpendituresByYear } from '../../utils/db/expenditureTracker';
-import { Grid } from '@mui/material';
+import { Grid, Typography } from '@mui/material';
 // generate data array 
 
 const Expenditure = () => {
@@ -67,21 +67,19 @@ const Expenditure = () => {
     // fetch data based on year
     return (
         <div>
-            <Grid className="container flex"
+            <Grid className="flex"
         container
         direction="row"
-        justifyContent="center"
-        alignItems="center"
         >
-            <Grid item xs className='expenditure-container'>
-            <h1>Expenditure Records</h1>
+            <Grid item className='expenditure-container border'>
+            <Typography align='center' variant='h6'>Expenditure Records</Typography>
             <form>
                 <label for='month-filter'>Filter by month: </label>
                 <input type="month" id='month-filter' name='month-filter' onChange={handleInput} />
             </form>
             <ExpenditureListContainer expenditures={filterRecords} handleInput={handleInput} />
             </Grid>
-            <Grid marginTop='70px' className='border rounded'>
+            <Grid item className='border rounded' sm>
             <form onSubmit={handleYearInput}>
                     <label for="year-filter">Filter by year for expenditure graph: </label>
                     <input type="number" id="year-filter" min="2000" max={lastestYear}/>
@@ -90,7 +88,6 @@ const Expenditure = () => {
             <ExpenditureOverviewContainer yearRecords={yearRecords} year={year}/>
             </Grid>
         </Grid>
-
         </div>
     )
 }

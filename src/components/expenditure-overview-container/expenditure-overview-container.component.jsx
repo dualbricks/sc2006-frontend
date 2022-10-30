@@ -1,5 +1,6 @@
 import './expenditure-overview-container.style.scss'
 import CanvasJSReact from '../../assets/canvasjs.react';
+import { Box, Paper, Typography } from '@mui/material';
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 const ExpenditureOverviewContainer = ({yearRecords, year}) => {
@@ -52,16 +53,19 @@ const ExpenditureOverviewContainer = ({yearRecords, year}) => {
     }
     
     return(
-        <div class="overview-container">          
-            <h1>Expenditure Overview</h1>
+        <Paper className="overview-container">
+            <Box>
+                <Typography textAlign='center' variant='h6'>Expenditure Overview</Typography>
             <CanvasJSChart options = {options}
                 /* onRef = {ref => this.chart = ref} */
             />  
             <section className='statistics'>
                 <p>Total expenditure: ${totalCost.toFixed(2)}</p>
                 <p>Average expenditure: ${(totalCost/yearRecords.length).toFixed(2)}</p>
-            </section>
-        </div>
+            </section>  
+            </Box>       
+
+        </Paper>
     )
 }
 

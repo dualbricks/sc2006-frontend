@@ -60,7 +60,6 @@ const CarParkItem = ({carpark}) => {
     if(carpark.error) return (
         <div className="carpark-container" key={carpark._id}>
             <h2>{carpark.error}</h2>
-     
         </div>
     )
 

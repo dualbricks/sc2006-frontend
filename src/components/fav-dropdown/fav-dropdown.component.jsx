@@ -10,7 +10,7 @@ const FavDropdown = () => {
     const {carParkList} = useContext(CarParkContext);
     const [isDesktop, setIsDesktop] = useState(window.innerWidth > 650);
     const updateMedia = () => { 
-        setIsDesktop(window.innerWidth > 600);
+        setIsDesktop(window.innerWidth > 650);
     }
 
 

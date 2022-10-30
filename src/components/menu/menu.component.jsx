@@ -3,6 +3,10 @@ import { useContext, useState } from "react";
 import { UserContext } from "../../contexts";
 import { LogOutUser } from "../../utils/db";
 import { Button } from "@mui/material";
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import CalculateIcon from '@mui/icons-material/Calculate';
+import LogoutIcon from '@mui/icons-material/Logout';
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import { useNavigate } from "react-router-dom";
 import "./menu.style.scss";
 
@@ -37,19 +41,16 @@ const Menu = ({toggler}) => {
     <div >
       <div className="align-center">
         <div className="row">
-          <Button className="menu-button" href="/settings" variant="contained" size="large">Account</Button>
+          <Button startIcon={<ManageAccountsIcon/>} className="menu-button" href="/settings" variant="contained" size="large">Account</Button>
         </div>
         <div className="row">
-         <Button className="menu-button" href="/expenditure" variant="contained" size="large">Expenditure</Button>
+         <Button startIcon={<AttachMoneyIcon/>} className="menu-button" href="/expenditure" variant="contained" size="large">Expenditure</Button>
         </div>
         <div className="row">
-         <Button className="menu-button" href="/traffic" variant="contained" size="large">Traffic</Button>
+         <Button startIcon={<CalculateIcon/>} className="menu-button" onClick={toggler} variant="contained" size="large">Cost Calculator</Button>
         </div>
         <div className="row">
-         <Button className="menu-button" onClick={toggler} variant="contained" size="large">Cost Calculator</Button>
-        </div>
-        <div className="row">
-        <Button className="menu-button"  variant="contained" onClick={onLogout} size="large">
+        <Button startIcon={<LogoutIcon/>} className="menu-button"  variant="contained" onClick={onLogout} size="large">
           Logout
         </Button>
         </div>

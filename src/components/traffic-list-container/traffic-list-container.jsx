@@ -8,7 +8,7 @@ const TrafficListContainer = ({ImageList}) => {
     return(
             <Box textAlign="center" className='box-container' width="xs">
                 <Grid container className="grid-container rounded" xs>
-                    {ImageList.map((trafficImage) => (<TrafficContainer key={trafficImage.CameraID} trafficImage={trafficImage}/>))}
+                    {ImageList.map((trafficImage) => (<TrafficContainer key={trafficImage._id} trafficImage={trafficImage}/>))}
                 </Grid>
             </Box>
 

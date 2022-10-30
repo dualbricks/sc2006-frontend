@@ -3,6 +3,7 @@ import { Menu, SignInForm, SignUpForm, CostCalculator } from '..'
 import { useContext,useState } from 'react'
 import { UserContext } from '../../contexts'
 import { Container } from 'react-bootstrap'
+import { Box } from '@mui/material'
 const textList = ['Click here to sign Up', 'Already have an account? click here']
 
 const DropdownMenu = () => {
@@ -23,9 +24,9 @@ const DropdownMenu = () => {
     return (
         <>
             <Container className='container dropdown-menu dropdown-container border border-dark align-center rounded' >
-            <div >
+            <div>
              {isAuthenticated ? (<Menu toggler={calculatorToggler}/>) : (signUpField ? <SignUpForm/>: (<SignInForm/>))}
-             {!isAuthenticated && <p className='text-btm'onClick={onSubmit}>{text}</p> }
+             {!isAuthenticated && <Box textAlign='center'><p className='text-btm align-center'onClick={onSubmit}>{text}</p></Box> }
             </div>
             </Container>
             {iscalculator && <CostCalculator isOpen={iscalculator} closeHandler={calculatorToggler}/>}

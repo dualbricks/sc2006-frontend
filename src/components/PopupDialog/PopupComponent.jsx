@@ -51,12 +51,10 @@ const PopupComponent = ({carpark, isOpen, closeHander, infoToggler, innerToggler
         return () => window.removeEventListener("resize", updateMedia);
     });
     const favOnclick = async (e) => {
-        console.log("favOnclick");
         setDisabled(true);
         try {
             const data = await favouriteHandler(token, {carParkID:carpark.CarParkID}, isfav)
             if(data) {
-                console.log(data)
                 setUser(data);
                 if(data.savedList.includes(carpark.CarParkID)) {
                     setIsfav(true);
@@ -66,7 +64,6 @@ const PopupComponent = ({carpark, isOpen, closeHander, infoToggler, innerToggler
                 setDisabled(false);
             }
         }catch(e) {
-            console.log(e)
             alert(e.message);
             setDisabled(false);
         }
@@ -124,7 +121,7 @@ const PopupComponent = ({carpark, isOpen, closeHander, infoToggler, innerToggler
                         position: 'absolute',
                         right: 50,
                         bottom: 8,
-                        color: (theme) => theme.palette.grey[500],
+                        color: (theme) => blue[500],
                         }}
                     size="large"
                     onClick={toggler}
@@ -193,7 +190,7 @@ const PopupComponent = ({carpark, isOpen, closeHander, infoToggler, innerToggler
                         position: 'absolute',
                         right: 50,
                         bottom: 8,
-                        color: (theme) => theme.palette.grey[500],
+                        color: (theme) => blue[500],
                         }}
                     size="large"
                     onClick={toggler}

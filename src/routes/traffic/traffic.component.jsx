@@ -4,7 +4,7 @@ import { fetchTrafficImage } from "../../utils/db";
 import { fetchTrafficImageByLocation, fetchTrafficImageByPostalCode } from "../../utils/db/fetchTrafficImage";
 const Traffic = () => {
     const [trafficImageList, setTrafficImageList] = useState([]);
-    const [updateTime, setUpdateTime] = useState('');
+    const [updateTime, setUpdateTime] = useState(Date());
     const [searchField, setSearchField] = useState('');
     const [filteredTrafficImageList, setFilteredTrafficImageList] = useState([]);
     const [location, setLocation] = useState({});
@@ -55,8 +55,8 @@ const Traffic = () => {
             if(searchField.length === 6 && searchField.match("[0-9]+")) {
                 try{
                     const newTrafficImageList = await fetchTrafficImageByPostalCode(searchField);
-                    console.log(newTrafficImageList);
                     setFilteredTrafficImageList(newTrafficImageList);
+                    return;
                 }catch(e) {
                     alert("No traffic images found");
                     setFilteredTrafficImageList([]);

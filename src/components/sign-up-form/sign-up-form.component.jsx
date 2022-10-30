@@ -1,6 +1,8 @@
 import { useState, useContext } from "react"
 import { SignUpUserWithEmailAndPassword } from "../../utils/db";
-import {FormInput, Button} from '../index'
+import {FormInput} from '../index'
+import Button from '@mui/material/Button';
+import LoginIcon from '@mui/icons-material/Login';
 import { UserContext } from "../../contexts";
 import { TextField, Box } from "@mui/material";
 import './sign-up-form.style.scss'
@@ -52,17 +54,15 @@ const SignUpForm = () => {
         <>
             <Box textAlign="center" >
                 <span>Sign up with your email and password</span>
-                <form onSubmit={handleSubmit}>
+                <form id='Signup' onSubmit={handleSubmit}>
                 <TextField  label='Email' type='email' required onChange={handleChange} name='email' value={email}/>
                 <TextField  label='Password' type='password' required onChange={handleChange} name='password' value={password}/>
                 <TextField  label='Confirm Password' type='password' required onChange={handleChange} name='confirmPassword' value={confirmPassword}/>
                 <p className="error">{errorMessage}</p>
                 <Box textAlign="center">
-                <Button>Sign Up</Button>
+                <Button startIcon={<LoginIcon/>} variant='contained' form='Signup' type="submit">Sign Up</Button>
                 </Box>
-            
                 </form>
-
             </Box>
 
         </>

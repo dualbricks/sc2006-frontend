@@ -8,6 +8,7 @@ import IconButton from "@mui/material/IconButton";
 import { deleteExpenditure } from '../../utils/db/expenditureTracker';
 import { useContext } from 'react';
 import { UserContext } from '../../contexts';
+import { Box } from '@mui/system';
 const ExpenditureRecord = ({record}) => {
     const {carParkID, startTime, endTime, cost,createdAt, _id } = record;
     const [isOpen, setIsOpen] = useState(false);
@@ -22,6 +23,7 @@ const ExpenditureRecord = ({record}) => {
         setLoading(true);
         try {
             await deleteExpenditure(token, _id);
+            alert("Expenditure deleted successfully");
             setRefresh(!refresh);
         }catch(e) {
             alert(e);
@@ -30,13 +32,14 @@ const ExpenditureRecord = ({record}) => {
     }
     return (
 
-        <Paper className="expenditure-record rounded">
-            <p>Carpark ID: {carParkID}</p>
-            <p>Date: {new Date(createdAt).toLocaleTimeString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'})}</p>
-            <p>Start Time: {new Date(startTime).toLocaleTimeString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'})}</p>
-            <p>End Time: {new Date(endTime).toLocaleTimeString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'})}</p>
-            <p>Cost: ${cost}</p>
-            <IconButton 
+        <Paper className="expenditure-record rounded rounded border">
+            <Box textAlign='center'>
+                <p>Carpark ID: {carParkID}</p>
+                <p>Date: {new Date(createdAt).toLocaleTimeString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'})}</p>
+                <p>Start Time: {new Date(startTime).toLocaleTimeString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'})}</p>
+                <p>End Time: {new Date(endTime).toLocaleTimeString([], {year: 'numeric', month: 'numeric', day: 'numeric', hour: '2-digit', minute: '2-digit'})}</p>
+                <p>Cost: ${cost}</p>
+                <IconButton 
                     size="large"
                     onClick={toggler}
                     >
@@ -49,6 +52,8 @@ const ExpenditureRecord = ({record}) => {
                     >
                     <DeleteIcon/>
             </IconButton>
+            </Box>
+ 
 
             {isOpen && <CostCalculator carParkID={carParkID} isOpen={isOpen} closeHandler={toggler} record={record}/>}
         </Paper>)

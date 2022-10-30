@@ -103,5 +103,55 @@ export const calculateById = (start, end, id) => {
         }
         return cost;
     }
+    else if (id === "3") {
+        let firstEntry = true;
+        let hours = 0;
+        while(remainingTime > 0) {
+            if(newStart.getDay() <= 4) {
+                if(newStart.getHours() <= 18 && newStart.getHours() >=8) {
+                    if(hours === 0) {
+                        cost += 2.20;
+                        hours += 1;
+                        remainingTime -= minute * 60;
+                        newStart = new Date(newStart.getTime() + minute * 60);
+                    }
+                    else {
+                        cost += 0.55;
+                        remainingTime -= minute * 15;
+                        newStart = new Date(newStart.getTime() + minute * 15);
+                    }
+                }
+                else if(newStart.getHours() >= 18 || newStart.getHours() <= 8) {
+                    if(firstEntry) {
+                        cost += 2.20;
+                        firstEntry = false;
+                    }
+                    remainingTime -= minute * 60;
+                    newStart = new Date(newStart.getTime() + minute * 60);
+                }
+            }
+            else {
+                let hours = 0;
+                if(hours < 2) {
+                    cost += 2.20;
+                    hours += 1;
+                    remainingTime -= minute * 60;
+                    newStart = new Date(newStart.getTime() + minute * 60);
+                }
+                else if(hours < 4) {
+                    cost += 0.40;
+                    hours += 0.15;
+                    remainingTime -= minute * 15;
+                    newStart = new Date(newStart.getTime() + minute * 15);
+                }
+                else {
+                    cost += 0.60;
+                    remainingTime -= minute * 15;
+                    newStart = new Date(newStart.getTime() + minute * 15);
+                }
+            }
+        }
+        return cost;
+    }
   
 }

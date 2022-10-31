@@ -22,14 +22,19 @@ const CostCalculator = ({isOpen, closeHandler, carParkID, record}) => {
         }
         return hours.toString();
     }
-
+    const minutesConverter = (minutes) => {
+        if(minutes <=9) {
+            return "0" + minutes.toString();
+        }
+        return minutes.toString();
+    }
     const [startDate, setStartDate] = useState(record? new Date(record.startTime).toISOString().split('T')[0]: '');
     const {token} = useContext(UserContext);
     const {carParkList} = useContext(CarParkContext);
     const [loading, setLoading] = useState(false)
     const [cost, setCost] = useState(record ? record.cost : 0);
-    const [startTime, setStartTime] = useState(record? (hoursConverter(new Date(record.startTime).getHours())+":"+new Date(record.startTime).getMinutes().toString()): '');
-    const [endTime, setEndTime] = useState(record? (hoursConverter(new Date(record.endTime).getHours())+":"+new Date(record.endTime).getMinutes().toString()):"");
+    const [startTime, setStartTime] = useState(record? (hoursConverter(new Date(record.startTime).getHours())+":"+minutesConverter(new Date(record.startTime).getMinutes().toString())): '');
+    const [endTime, setEndTime] = useState(record? (hoursConverter(new Date(record.endTime).getHours())+":"+minutesConverter(new Date(record.endTime).getMinutes().toString())):"");
     const [endDate, setEndDate] = useState(record? new Date(record.endTime).toISOString().split('T')[0]: '');
     const [specific, setSpecific] = useState(carParkID? true: false);
     const [autoCompleteValue, setAutoCompleteValue] = useState('');

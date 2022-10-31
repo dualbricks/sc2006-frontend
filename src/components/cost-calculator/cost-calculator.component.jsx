@@ -16,13 +16,20 @@ import { calculateById } from '../../utils/calculator';
 
 const CostCalculator = ({isOpen, closeHandler, carParkID, record}) => {
 
+    const hoursConverter = (hours) => {
+        if(hours <=9) {
+            return "0" + hours.toString();
+        }
+        return hours.toString();
+    }
+
     const [startDate, setStartDate] = useState(record? new Date(record.startTime).toISOString().split('T')[0]: '');
     const {token} = useContext(UserContext);
     const {carParkList} = useContext(CarParkContext);
     const [loading, setLoading] = useState(false)
     const [cost, setCost] = useState(record ? record.cost : 0);
-    const [startTime, setStartTime] = useState(record? new Date(record.startTime).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}).split(' ')[0]: '');
-    const [endTime, setEndTime] = useState(record? new Date(record.endTime).toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'}).split(' ')[0]:"");
+    const [startTime, setStartTime] = useState(record? (hoursConverter(new Date(record.startTime).getHours())+":"+new Date(record.startTime).getMinutes().toString()): '');
+    const [endTime, setEndTime] = useState(record? (hoursConverter(new Date(record.endTime).getHours())+":"+new Date(record.endTime).getMinutes().toString()):"");
     const [endDate, setEndDate] = useState(record? new Date(record.endTime).toISOString().split('T')[0]: '');
     const [specific, setSpecific] = useState(carParkID? true: false);
     const [autoCompleteValue, setAutoCompleteValue] = useState('');
@@ -136,22 +143,22 @@ const CostCalculator = ({isOpen, closeHandler, carParkID, record}) => {
             {specific ? (<Paper className='border rounded'>
             <Form id='costForm' onSubmit={onCostCalculatorSubmit}>
                 <Form.Group className="mb-3">
-                    <TextField type="text" name='id' value={carParkID} label="Car Park ID" variant="outlined" disabled/>
+                    <TextField type="text" name='id' value={carParkID} label="Car Park ID" variant="outlined" disabled sx={{"width": "150px"}}/>
                 </Form.Group>
                 <Form.Group className="mb-3">
-                    <TextField type="date" name="startDate" onChange={(e)=>setStartDate(e.target.value)} value={startDate} label="Start Date" required />
-                    <TextField type="time" name="stime"  onChange={(e)=>setStartTime(e.target.value)} value={startTime} min="00:00" max="23:59" label="Start Time" required />
+                    <TextField type="date" name="startDate" onChange={(e)=>setStartDate(e.target.value)} value={startDate} label="Start Date" required sx={{"width": "150px"}}/>
+                    <TextField type="time" name="stime"  onChange={(e)=>setStartTime(e.target.value)} value={startTime} min="00:00" max="23:59" label="Start Time" required sx={{"width": "150px"}}/>
 
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <TextField type="date" name="endDate" min={startDate} onChange={(e)=>setEndDate(e.target.value)} value={endDate} required label="End Date"/>
-                    <TextField type="time" name="etime" min="00:00" max="23:59" onChange={(e)=>setEndTime(e.target.value)} value={endTime} required label="End TIme"/>
+                    <TextField type="date" name="endDate" min={startDate} onChange={(e)=>setEndDate(e.target.value)} value={endDate} required label="End Date" sx={{"width": "150px"}}/>
+                    <TextField type="time" name="etime" min="00:00" max="23:59" onChange={(e)=>setEndTime(e.target.value)} value={endTime} required label="End TIme" sx={{"width": "150px"}}/>
                     
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <TextField type="number" min="0" step="any" name="cost" onChange={(e)=>setCost(e.target.value)} value={cost} required label="cost"/>
+                    <TextField type="number" min="0" step="any" name="cost" onChange={(e)=>setCost(e.target.value)} value={cost} required label="cost" sx={{"width": "150px"}}/>
                     
                 </Form.Group>
 
@@ -205,19 +212,19 @@ const CostCalculator = ({isOpen, closeHandler, carParkID, record}) => {
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <TextField type="date" name="startDate" onChange={(e)=>setStartDate(e.target.value)} value={startDate} label="Start Date" required />
-                    <TextField type="time" name="stime"  onChange={(e)=>setStartTime(e.target.value)} value={startTime} min="00:00" max="23:59" label="Start Time" required />
+                    <TextField type="date" name="startDate" onChange={(e)=>setStartDate(e.target.value)} value={startDate} label="Start Date" required  sx={{"width": "150px"}}/>
+                    <TextField type="time" name="stime"  onChange={(e)=>setStartTime(e.target.value)} value={startTime} min="00:00" max="23:59" label="Start Time" required sx={{"width": "150px"}} />
 
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <TextField type="date" name="endDate" min={startDate} onChange={(e)=>setEndDate(e.target.value)} value={endDate} required label="End Date"/>
-                    <TextField type="time" name="etime" min="00:00" max="23:59" onChange={(e)=>setEndTime(e.target.value)} value={endTime} required label="End TIme"/>
+                    <TextField type="date" name="endDate" min={startDate} onChange={(e)=>setEndDate(e.target.value)} value={endDate} required label="End Date" sx={{"width": "150px"}}/>
+                    <TextField type="time" name="etime" min="00:00" max="23:59" onChange={(e)=>setEndTime(e.target.value)} value={endTime} required label="End TIme" sx={{"width": "150px"}}/>
                     
                 </Form.Group>
 
                 <Form.Group className="mb-3">
-                    <TextField type="number" min="0" step="any" name="cost" onChange={(e)=>setCost(e.target.value)} value={cost} required label="cost"/>
+                    <TextField type="number" min="0" step="any" name="cost" onChange={(e)=>setCost(e.target.value)} value={cost} required label="cost" sx={{"width": "150px"}}/>
                     
                 </Form.Group>
 
